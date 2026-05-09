@@ -123,15 +123,15 @@ def logout():
 # DASHBOARD
 # =========================
 
-@app.route('/dashboard')
+@app.route('/update_progress/<int:value>')
 @login_required
-def dashboard():
+def update_progress(value):
 
-    return render_template(
-        'dashboard.html',
-        username=current_user.username,
-        progress=current_user.progress
-    )
+    current_user.progress = value
+
+    db.session.commit()
+
+    return redirect(url_for('dashboard'))
 
 
 # =========================
