@@ -7,67 +7,98 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="google-site-verification" content="UE4R0Wo4502c_lxt8UrAEuKHNHhigCFWg_OfGSRdmXQ" />
+    <meta name="google-site-verification"
+        content="UE4R0Wo4502c_lxt8UrAEuKHNHhigCFWg_OfGSRdmXQ" />
 
     <title>Manjora AI</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-    <div class="container">
+    <nav class="navbar">
 
-        <h1>🚀 AI EDU MENTOR</h1>
+        <h2>🚀 Manjora AI</h2>
 
-        <p>
-            Smart Learning Platform for Students, UPSC Aspirants & Professionals
-        </p>
+        <div>
 
-        <div class="card-container">
+            <a href="/">Home</a>
 
-            <div class="card">
+            <a href="/login">Login</a>
 
-                <h2>📚 UPSC Guidance</h2>
+            <a href="/register">Register</a>
 
-                <p>
-                    Study plans, current affairs, booklists and strategy.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h2>💻 Programming</h2>
-
-                <p>
-                    Learn coding, DSA, projects and placements.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h2>🎯 Career Roadmaps</h2>
-
-                <p>
-                    Personalized learning paths for every career goal.
-                </p>
-
-            </div>
+            <a href="/dashboard">Dashboard</a>
 
         </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>🚀 Welcome to Manjora AI</h1>
+
+        <p>
+
+            AI-powered learning and productivity platform
+            for students, UPSC aspirants and professionals.
+
+        </p>
 
         <a href="/login">
 
             <button>
+
                 Start Learning
+
             </button>
 
         </a>
 
-    </div>
+    </section>
+
+    <section class="features">
+
+        <div class="feature-card">
+
+            <h2>📚 Study Planner</h2>
+
+            <p>
+
+                Create smart study schedules and track progress.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <h2>🤖 AI Mentor</h2>
+
+            <p>
+
+                Get AI-powered guidance for studies and career.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <h2>🏆 Productivity</h2>
+
+            <p>
+
+                Build streaks, reminders and focus sessions.
+
+            </p>
+
+        </div>
+
+    </section>
 
 </body>
 
