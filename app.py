@@ -1,54 +1,42 @@
-from flask import Flask, render_template, request, jsonify
-from openai import OpenAI
-import os
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
 @app.route('/')
 def home():
-    return render_template('chatbot.html')
+    return render_template('index.html')
 
-@app.route('/ask_ai', methods=['POST'])
-def ask_ai():
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
-    data = request.get_json()
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
-    user_message = data.get('message')
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
-    try:
+@app.route('/planner')
+def planner():
+    return render_template('planner.html')
 
-        response = client.chat.completions.create(
+@app.route('/career')
+def career():
+    return render_template('career.html')
 
-            model="gpt-3.5-turbo",
+@app.route('/reminder')
+def reminder():
+    return render_template('reminder.html')
 
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are Manjora AI, a smart AI mentor."
-                },
-                {
-                    "role": "user",
-                    "content": user_message
-                }
-            ]
+@app.route('/books')
+def books():
+    return render_template('books.html')
 
-        )
-
-        ai_reply = response.choices[0].message.content
-
-        return jsonify({
-            "reply": ai_reply
-        })
-
-    except Exception as e:
-
-        return jsonify({
-            "reply": str(e)
-        })
+@app.route('/affairs')
+def affairs():
+    return render_template('affairs.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
