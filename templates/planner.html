@@ -1,128 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>AI Study Planner</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Study Planner - Manjora AI</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
-<body id="body">
+<body>
 
-<div class="container">
+    <nav class="navbar">
 
-<button onclick="toggleDarkMode()" id="darkBtn">
+        <h2>📚 Manjora AI</h2>
 
-🌙 Dark Mode
+        <div>
 
-</button>
+            <a href="/">Home</a>
 
-<h1>🧠 AI Study Planner</h1>
+            <a href="/dashboard">Dashboard</a>
 
-<input
-type="text"
-id="subject"
-placeholder="Enter Subject">
+            <a href="/chatbot">AI Mentor</a>
 
-<input
-type="number"
-id="hours"
-placeholder="Study Hours">
+        </div>
 
-<button onclick="addStudyTask()">
+    </nav>
 
-    Add Study Task
+    <div class="container">
 
-</button>
+        <h1>
 
-<ul id="studyList"></ul>
+            Smart Study Planner
 
-<h1 style="margin-top:40px;">
-    📅 Smart Timetable
-</h1>
+        </h1>
 
-<button onclick="generateTimetable()">
+        <p>
 
-    Generate Timetable
+            Plan your daily study goals effectively.
 
-</button>
+        </p>
 
-<div id="timetable"></div>
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter study task...">
 
-<h1 style="margin-top:40px;">
-    ⏳ Pomodoro Timer
-</h1>
+        <button onclick="addTask()">
 
-<div id="timer">
+            Add Task
 
-    25:00
+        </button>
 
-</div>
+        <div id="taskList">
 
-<button onclick="startTimer()">
-
-    Start Timer
-
-</button>
-
-<button onclick="resetTimer()">
-
-    Reset Timer
-
-</button>
-
-<h1 style="margin-top:50px;">
-    📊 Productivity Analytics
-</h1>
-
-<div class="analytics">
-
-    <div class="analytics-card">
-
-        <h2 id="totalTasks">
-            0
-        </h2>
-
-        <p>Total Tasks</p>
+        </div>
 
     </div>
 
-    <div class="analytics-card">
+    <script>
 
-        <h2 id="totalHours">
-            0
-        </h2>
+        function addTask(){
 
-        <p>Total Study Hours</p>
+            let input =
+                document.getElementById("taskInput");
 
-    </div>
+            let task = input.value;
 
-</div>
+            if(task.trim() === "") return;
 
-<canvas id="studyChart"></canvas>
+            let taskList =
+                document.getElementById("taskList");
 
-<h1 style="margin-top:50px;">
-    📄 Export Study Plan
-</h1>
+            taskList.innerHTML +=
+                `<div class="planner-task">
+                    ✅ ${task}
+                </div>`;
 
-<a href="/download_pdf">
+            input.value = "";
+        }
 
-<button>
-
-    Download PDF
-
-</button>
-
-</a>
-
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    </script>
 
 </body>
+
 </html>

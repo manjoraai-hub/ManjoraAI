@@ -622,3 +622,35 @@ button:hover{
 
     margin-top:20px;
 }
+/* =========================
+   PLANNER
+========================= */
+
+#taskList{
+
+    margin-top:30px;
+}
+
+.planner-task{
+
+    background:rgba(255,255,255,0.1);
+
+    padding:18px;
+
+    margin-top:15px;
+
+    border-radius:15px;
+
+    font-size:20px;
+
+    transition:0.3s;
+
+    animation:fadeIn 0.5s ease;
+}
+
+.planner-task:hover{
+
+    transform:scale(1.02);
+
+    background:rgba(255,255,255,0.2);
+}
