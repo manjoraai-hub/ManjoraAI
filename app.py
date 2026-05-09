@@ -2,9 +2,10 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+# Login page will open first
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('login.html')
 
 @app.route('/dashboard')
 def dashboard():
