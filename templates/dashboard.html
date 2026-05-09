@@ -1,64 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manjora AI Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-<div class="container">
+    <div class="dashboard-container">
 
-    <h1>🎓 Student Dashboard</h1>
+        <h1>🚀 Manjora AI Dashboard</h1>
 
-    <div class="<a href="/chatbot" class="card">
+        <p>Welcome to your AI learning platform.</p>
 
-    🤖
+        <div class="dashboard-grid">
 
-    <h2>AI Mentor</h2>
+            <a href="/planner" class="dashboard-card">
+                📚 Study Planner
+            </a>
 
-</a>">
+            <a href="/career" class="dashboard-card">
+                🎯 Career Roadmaps
+            </a>
 
-        <a href="/books" class="card">
+            <a href="/affairs" class="dashboard-card">
+                📰 Current Affairs
+            </a>
 
-            📚
+            <a href="/chatbot" class="dashboard-card">
+                🤖 AI Chatbot
+            </a>
 
-            <h2>Book Recommendations</h2>
+            <a href="/reminder" class="dashboard-card">
+                ⏰ Reminders
+            </a>
 
-        </a>
+            <a href="/" class="dashboard-card">
+                🏠 Home
+            </a>
 
-        <a href="/planner" class="card">
-
-            🧠
-
-            <h2>AI Study Planner</h2>
-
-        </a>
-
-        <a href="/career" class="card">
-
-            🎯
-
-            <h2>Career Guidance</h2>
-
-        </a>
-
-        <a href="/affairs" class="card">
-
-            📰
-
-            <h2>Current Affairs</h2>
-
-        </a>
+        </div>
 
     </div>
 
-</div>
-
 </body>
+
 </html>
