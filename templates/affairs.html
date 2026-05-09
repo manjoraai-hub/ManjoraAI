@@ -37,7 +37,7 @@
 
 </div>
 
-<!-- MAIN CONTAINER -->
+<!-- MAIN -->
 
 <div class="container">
 
@@ -59,7 +59,7 @@
 
     </p>
 
-    <!-- REFRESH BUTTON -->
+    <!-- REFRESH -->
 
     <a href="/affairs"
     class="btn">
@@ -73,57 +73,85 @@
     <div class="dashboard-grid"
     style="margin-top:40px;">
 
-        {% for article in articles %}
+        {% if articles %}
 
-        <div class="dashboard-card">
+            {% for article in articles %}
 
-            <!-- IMAGE -->
+            <div class="dashboard-card">
 
-            {% if article.urlToImage %}
+                <!-- IMAGE -->
 
-            <img src="{{ article.urlToImage }}"
-            style="
-            width:100%;
-            height:220px;
-            object-fit:cover;
-            border-radius:15px;
-            margin-bottom:15px;">
+                {% if article.urlToImage %}
 
-            {% endif %}
+                <img src="{{ article.urlToImage }}"
+                style="
+                width:100%;
+                height:220px;
+                object-fit:cover;
+                border-radius:15px;
+                margin-bottom:15px;">
 
-            <!-- TITLE -->
+                {% endif %}
 
-            <h2 style="
-            font-size:24px;
-            margin-bottom:15px;">
+                <!-- TITLE -->
 
-                {{ article.title }}
+                <h2 style="
+                font-size:24px;
+                margin-bottom:15px;">
 
-            </h2>
+                    {{ article.title }}
 
-            <!-- DESCRIPTION -->
+                </h2>
 
-            <p style="
-            line-height:1.6;
-            margin-bottom:20px;">
+                <!-- DESCRIPTION -->
 
-                {{ article.description }}
+                <p style="
+                line-height:1.6;
+                margin-bottom:20px;">
 
-            </p>
+                    {{ article.description }}
 
-            <!-- READ BUTTON -->
+                </p>
 
-            <a href="{{ article.url }}"
-            target="_blank"
-            class="btn">
+                <!-- LINK -->
 
-                Read Full News
+                <a href="{{ article.url }}"
+                target="_blank"
+                class="btn">
 
-            </a>
+                    Read Full News
 
-        </div>
+                </a>
 
-        {% endfor %}
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div style="
+            margin-top:40px;">
+
+                <h2>
+
+                    ❌ No news loaded.
+
+                </h2>
+
+                <p style="
+                margin-top:20px;
+                font-size:20px;">
+
+                    Check:
+                    API key,
+                    internet connection,
+                    or NewsAPI limits.
+
+                </p>
+
+            </div>
+
+        {% endif %}
 
     </div>
 

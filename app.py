@@ -4,8 +4,18 @@ from flask import Flask, render_template, redirect, url_for, request
 
 from flask_sqlalchemy import SQLAlchemy
 
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    login_user,
+    login_required,
+    logout_user,
+    current_user
+)
 
+# =========================
+# APP CONFIG
+# =========================
 
 app = Flask(__name__)
 
@@ -13,15 +23,17 @@ app.config['SECRET_KEY'] = 'manjora_secret_key'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
-
 db = SQLAlchemy(app)
+
+# =========================
+# LOGIN MANAGER
+# =========================
 
 login_manager = LoginManager()
 
 login_manager.init_app(app)
 
 login_manager.login_view = 'login'
-
 
 # =========================
 # DATABASE MODEL
@@ -31,12 +43,17 @@ class User(UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    username = db.Column(db.String(100), unique=True)
+    username = db.Column(
+        db.String(100),
+        unique=True
+    )
 
     password = db.Column(db.String(100))
 
-    progress = db.Column(db.Integer, default=0)
-
+    progress = db.Column(
+        db.Integer,
+        default=0
+    )
 
 # =========================
 # LOAD USER
@@ -47,7 +64,6 @@ def load_user(user_id):
 
     return User.query.get(int(user_id))
 
-
 # =========================
 # HOME PAGE
 # =========================
@@ -56,7 +72,6 @@ def load_user(user_id):
 def home():
 
     return render_template('index.html')
-
 
 # =========================
 # REGISTER
@@ -84,7 +99,6 @@ def register():
 
     return render_template('register.html')
 
-
 # =========================
 # LOGIN
 # =========================
@@ -107,10 +121,11 @@ def login():
 
             login_user(user)
 
-            return redirect(url_for('dashboard'))
+            return redirect(
+                url_for('dashboard')
+            )
 
     return render_template('login.html')
-
 
 # =========================
 # LOGOUT
@@ -123,7 +138,6 @@ def logout():
     logout_user()
 
     return redirect(url_for('login'))
-
 
 # =========================
 # DASHBOARD
@@ -139,7 +153,6 @@ def dashboard():
         progress=current_user.progress
     )
 
-
 # =========================
 # UPDATE PROGRESS
 # =========================
@@ -152,8 +165,9 @@ def update_progress(value):
 
     db.session.commit()
 
-    return redirect(url_for('dashboard'))
-
+    return redirect(
+        url_for('dashboard')
+    )
 
 # =========================
 # PLANNER
@@ -165,7 +179,6 @@ def planner():
 
     return render_template('planner.html')
 
-
 # =========================
 # CAREER
 # =========================
@@ -175,7 +188,6 @@ def planner():
 def career():
 
     return render_template('career.html')
-
 
 # =========================
 # BOOKS
@@ -187,9 +199,8 @@ def books():
 
     return render_template('books.html')
 
-
 # =========================
-# LIVE CURRENT AFFAIRS
+# CURRENT AFFAIRS
 # =========================
 
 @app.route('/affairs')
@@ -200,17 +211,33 @@ def affairs():
 
     url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={api_key}"
 
-    response = requests.get(url)
+    articles = []
 
-    data = response.json()
+    try:
 
-    articles = data.get("articles", [])
+        response = requests.get(url)
+
+        data = response.json()
+
+        if data["status"] == "ok":
+
+            articles = data.get(
+                "articles",
+                []
+            )
+
+        else:
+
+            print(data)
+
+    except Exception as e:
+
+        print("Error:", e)
 
     return render_template(
         'affairs.html',
         articles=articles
     )
-
 
 # =========================
 # CREATE DATABASE
@@ -219,7 +246,6 @@ def affairs():
 with app.app_context():
 
     db.create_all()
-
 
 # =========================
 # RUN APP
