@@ -1,251 +1,104 @@
+from flask import Flask, render_template
 import requests
 
-from flask import Flask, render_template, redirect, url_for, request
-
-from flask_sqlalchemy import SQLAlchemy
-
-from flask_login import (
-    LoginManager,
-    UserMixin,
-    login_user,
-    login_required,
-    logout_user,
-    current_user
-)
-
-# =========================
-# APP CONFIG
-# =========================
-
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'manjora_secret_key'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-
-db = SQLAlchemy(app)
-
-# =========================
-# LOGIN MANAGER
-# =========================
-
-login_manager = LoginManager()
-
-login_manager.init_app(app)
-
-login_manager.login_view = 'login'
-
-# =========================
-# DATABASE MODEL
-# =========================
-
-class User(UserMixin, db.Model):
-
-    id = db.Column(db.Integer, primary_key=True)
-
-    username = db.Column(
-        db.String(100),
-        unique=True
-    )
-
-    password = db.Column(db.String(100))
-
-    progress = db.Column(
-        db.Integer,
-        default=0
-    )
-
-# =========================
-# LOAD USER
-# =========================
-
-@login_manager.user_loader
-def load_user(user_id):
-
-    return User.query.get(int(user_id))
-
-# =========================
-# HOME PAGE
-# =========================
 
 @app.route('/')
 def home():
 
-    return render_template('index.html')
+    return """
+    <h1>🚀 Manjora AI</h1>
 
-# =========================
-# REGISTER
-# =========================
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-
-    if request.method == 'POST':
-
-        username = request.form.get('username')
-
-        password = request.form.get('password')
-
-        user = User(
-            username=username,
-            password=password
-        )
-
-        db.session.add(user)
-
-        db.session.commit()
-
-        return redirect(url_for('login'))
-
-    return render_template('register.html')
-
-# =========================
-# LOGIN
-# =========================
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-
-    if request.method == 'POST':
-
-        username = request.form.get('username')
-
-        password = request.form.get('password')
-
-        user = User.query.filter_by(
-            username=username,
-            password=password
-        ).first()
-
-        if user:
-
-            login_user(user)
-
-            return redirect(
-                url_for('dashboard')
-            )
-
-    return render_template('login.html')
-
-# =========================
-# LOGOUT
-# =========================
-
-@app.route('/logout')
-@login_required
-def logout():
-
-    logout_user()
-
-    return redirect(url_for('login'))
-
-# =========================
-# DASHBOARD
-# =========================
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-
-    return render_template(
-        'dashboard.html',
-        username=current_user.username,
-        progress=current_user.progress
-    )
-
-# =========================
-# UPDATE PROGRESS
-# =========================
-
-@app.route('/update_progress/<int:value>')
-@login_required
-def update_progress(value):
-
-    current_user.progress = value
-
-    db.session.commit()
-
-    return redirect(
-        url_for('dashboard')
-    )
-
-# =========================
-# PLANNER
-# =========================
-
-@app.route('/planner')
-@login_required
-def planner():
-
-    return render_template('planner.html')
-
-# =========================
-# CAREER
-# =========================
-
-@app.route('/career')
-@login_required
-def career():
-
-    return render_template('career.html')
-
-# =========================
-# BOOKS
-# =========================
-
-@app.route('/books')
-@login_required
-def books():
-
-    return render_template('books.html')
-
-# =========================
-# CURRENT AFFAIRS
-# =========================
+    <a href='/affairs'>
+    Open Current Affairs
+    </a>
+    """
 
 @app.route('/affairs')
-@login_required
 def affairs():
 
-    api_key = "df0d2e457969b94603f4182e33e9a928"
+    articles = [
 
-    url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={api_key}"
+        {
+            "title": "India launches new education initiative",
 
-    articles = []
+            "description":
+            "New reforms introduced for digital learning.",
 
-    try:
+            "url":
+            "https://www.thehindu.com/news/national/",
 
-        response = requests.get(url)
+            "image":
+            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+        }
 
-        data = response.json()
-
-        if data["status"] == "ok":
-
-            articles = data.get(
-                "articles",
-                []
-            )
-
-        else:
-
-            print(data)
-
-    except Exception as e:
-
-        print("Error:", e)
+    ]
 
     return render_template(
         'affairs.html',
         articles=articles
     )
 
+if __name__ == '__main__':
+
+    app.run(debug=True)
+from flask import Flask, render_template
+
+@app.route('/')
+def home():
+
+    return """
+    <h1 style='font-family:Arial;'>
+    🚀 Manjora AI Working
+    </h1>
+
+    <a href='/affairs'
+    style='font-size:22px;'>
+    Open Current Affairs
+    </a>
+    """
+
 # =========================
-# CREATE DATABASE
+# CURRENT AFFAIRS
 # =========================
 
-with app.app_context():
+@app.route('/affairs')
+def affairs():
 
-    db.create_all()
+    articles = [
+
+        {
+            "title": "India launches new education initiative",
+
+            "description":
+            "New reforms introduced for digital learning and smart classrooms.",
+
+            "url":
+            "https://www.thehindu.com/news/national/",
+
+            "image":
+            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+        },
+
+        {
+            "title": "AI transforming education sector",
+
+            "description":
+            "Artificial Intelligence helps students learn faster and improve productivity.",
+
+            "url":
+            "https://indianexpress.com/latest-news/",
+
+            "image":
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+        }
+
+    ]
+
+    return render_template(
+        'affairs.html',
+        articles=articles
+    )
 
 # =========================
 # RUN APP
