@@ -559,3 +559,45 @@ function saveNotes(){
     alert("✅ Notes Saved Successfully");
 
 }
+function addGoal(){
+
+    let goalInput = document.getElementById("goal-input");
+
+    let goal = goalInput.value;
+
+    if(goal === ""){
+
+        alert("Please enter a goal");
+
+        return;
+
+    }
+
+    let goalList = document.getElementById("goal-list");
+
+    let div = document.createElement("div");
+
+    div.className = "task";
+
+    div.innerHTML = `
+
+        <div>
+
+            🎯 ${goal}
+
+        </div>
+
+        <button class="delete-btn"
+        onclick="this.parentElement.remove()">
+
+            Remove
+
+        </button>
+
+    `;
+
+    goalList.appendChild(div);
+
+    goalInput.value = "";
+
+}
