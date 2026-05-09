@@ -28,7 +28,8 @@
             align-items:center;
 
             background:
-            linear-gradient(rgba(15,23,42,0.85),
+            linear-gradient(
+            rgba(15,23,42,0.85),
             rgba(15,23,42,0.92)),
 
             url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400');
@@ -183,80 +184,104 @@
 
 <body>
 
-    <div class="login-box">
+<div class="login-box">
 
-        <div class="logo">🚀</div>
+    <div class="logo">
 
-        <h1>Manjora AI</h1>
-
-        <p class="subtitle">
-
-            Smart Learning & Productivity Platform
-
-        </p>
-
-        <!-- LOGIN FORM -->
-
-        <form method="POST">
-
-            <div class="input-group">
-
-                <input type="text"
-                name="username"
-                placeholder="Enter Username"
-                required>
-
-            </div>
-
-            <div class="input-group">
-
-                <input type="password"
-                name="password"
-                placeholder="Enter Password"
-                required>
-
-            </div>
-
-            <button type="submit"
-            class="login-btn">
-
-                Login
-
-            </button>
-
-        </form>
-
-        <div class="register">
-
-            Don't have an account?
-
-            <a href="/register">
-
-                Register
-
-            </a>
-
-        </div>
-
-        <div class="features">
-
-            <h3>✨ Features</h3>
-
-            <p>✅ Study Planner</p>
-
-            <p>✅ UPSC Learning Hub</p>
-
-            <p>✅ Career Roadmaps</p>
-
-            <p>✅ Books & Lectures</p>
-
-            <p>✅ Productivity Dashboard</p>
-
-            <p>✅ Personal Progress Tracking</p>
-
-        </div>
+        🚀
 
     </div>
+
+    <h1>
+
+        Manjora AI
+
+    </h1>
+
+    <p class="subtitle">
+
+        Smart Learning &
+        Productivity Platform
+
+    </p>
+
+    <!-- WORKING LOGIN FORM -->
+
+    <form method="POST"
+    action="/login">
+
+        <div class="input-group">
+
+            <input type="text"
+            name="username"
+            placeholder="Enter Username"
+            required>
+
+        </div>
+
+        <div class="input-group">
+
+            <input type="password"
+            name="password"
+            placeholder="Enter Password"
+            required>
+
+        </div>
+
+        <button type="submit"
+        class="login-btn">
+
+            Login
+
+        </button>
+
+    </form>
+
+    <!-- REGISTER -->
+
+    <div class="register">
+
+        Don't have an account?
+
+        <a href="/register">
+
+            Register
+
+        </a>
+
+    </div>
+
+    <!-- FEATURES -->
+
+    <div class="features">
+
+        <h3>
+
+            ✨ Features
+
+        </h3>
+
+        <p>✅ Study Planner</p>
+
+        <p>✅ UPSC Learning Hub</p>
+
+        <p>✅ Career Roadmaps</p>
+
+        <p>✅ Books & Lectures</p>
+
+        <p>✅ Productivity Dashboard</p>
+
+        <p>✅ Personal Progress Tracking</p>
+
+        <p>✅ Live Current Affairs</p>
+
+        <p>✅ Daily News Updates</p>
+
+        <p>✅ AI Chatbot Assistant</p>
+
+    </div>
+
+</div>
 
 </body>
 
