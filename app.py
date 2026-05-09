@@ -9,15 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
-    return """
-    <h1>
-    🚀 Manjora AI
-    </h1>
-
-    <a href='/affairs'>
-    Open Current Affairs
-    </a>
-    """
+    return render_template('dashboard.html')
 
 # =========================
 # CURRENT AFFAIRS
