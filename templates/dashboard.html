@@ -1,56 +1,357 @@
 <!DOCTYPE html>
+<html lang="en">
 
-                Read latest daily news, UPSC current affairs and technology updates.
+<head>
 
-            </p>
+<meta charset="UTF-8">
 
-            <a href="/affairs"
-            class="btn">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-                Open News
+<title>Manjora AI Dashboard</title>
 
-            </a>
+<style>
 
-        </div>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-        <div class="card">
+body{
 
-            <div class="icon">
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#1e293b);
 
-                📖
+color:white;
 
-            </div>
+min-height:100vh;
+}
 
-            <h2>
+/* NAVBAR */
 
-                Books & Lectures
+.navbar{
 
-            </h2>
+display:flex;
 
-            <p>
+justify-content:space-between;
 
-                Access books, learning materials and educational resources.
+align-items:center;
 
-            </p>
+padding:20px 40px;
 
-            <a href="/books"
-            class="btn">
+background:rgba(255,255,255,0.05);
 
-                Open Library
+backdrop-filter:blur(10px);
+}
 
-            </a>
+.navbar h2{
 
-        </div>
+color:#38bdf8;
 
-    </div>
+font-size:34px;
+}
 
-    <!-- FOOTER -->
+.menu a{
 
-    <div class="footer">
+color:white;
 
-        🌟 Manjora AI © 2026 | Smart Education Platform
+text-decoration:none;
 
-    </div>
+margin-left:25px;
+
+font-size:18px;
+
+transition:0.3s;
+}
+
+.menu a:hover{
+
+color:#38bdf8;
+}
+
+/* HERO */
+
+.hero{
+
+text-align:center;
+
+padding:70px 20px;
+}
+
+.hero h1{
+
+font-size:65px;
+
+color:#38bdf8;
+}
+
+.hero p{
+
+margin-top:20px;
+
+font-size:24px;
+
+color:#cbd5e1;
+}
+
+/* CARDS */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+padding:40px;
+}
+
+.card{
+
+background:rgba(255,255,255,0.08);
+
+padding:30px;
+
+border-radius:25px;
+
+transition:0.3s;
+
+box-shadow:
+0 0 20px rgba(0,0,0,0.2);
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,0.12);
+}
+
+.card h2{
+
+color:#38bdf8;
+
+margin-bottom:15px;
+
+font-size:30px;
+}
+
+.card p{
+
+color:#e2e8f0;
+
+line-height:1.7;
+
+font-size:18px;
+}
+
+.btn{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:12px 22px;
+
+background:#2563eb;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:12px;
+
+transition:0.3s;
+}
+
+.btn:hover{
+
+background:#1d4ed8;
+
+transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+.navbar{
+
+flex-direction:column;
+}
+
+.menu{
+
+margin-top:15px;
+}
+
+.menu a{
+
+display:inline-block;
+
+margin:10px;
+}
+
+.hero h1{
+
+font-size:42px;
+}
+
+.hero p{
+
+font-size:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<h2>
+
+🚀 Manjora AI
+
+</h2>
+
+<div class="menu">
+
+<a href="/dashboard">Home</a>
+
+<a href="/planner">Planner</a>
+
+<a href="/career">Career</a>
+
+<a href="/books">Books</a>
+
+<a href="/affairs">Current Affairs</a>
+
+</div>
+
+</div>
+
+<div class="hero">
+
+<h1>
+
+Welcome to Manjora AI
+
+</h1>
+
+<p>
+
+Smart Learning & Productivity Platform
+
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>
+
+📚 Study Planner
+
+</h2>
+
+<p>
+
+Organize your study schedules,
+manage productivity and complete targets.
+
+</p>
+
+<a href="/planner"
+class="btn">
+
+Open
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+🎯 Career Roadmap
+
+</h2>
+
+<p>
+
+Explore career guidance,
+skills and learning paths.
+
+</p>
+
+<a href="/career"
+class="btn">
+
+Explore
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+📰 Current Affairs
+
+</h2>
+
+<p>
+
+Read latest daily news,
+UPSC current affairs and technology updates.
+
+</p>
+
+<a href="/affairs"
+class="btn">
+
+Open News
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+📖 Books & Lectures
+
+</h2>
+
+<p>
+
+Access books, notes,
+lectures and educational resources.
+
+</p>
+
+<a href="/books"
+class="btn">
+
+Open Library
+
+</a>
+
+</div>
 
 </div>
 
