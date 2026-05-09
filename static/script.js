@@ -601,3 +601,35 @@ function addGoal(){
     goalInput.value = "";
 
 }
+let streak = localStorage.getItem("study_streak");
+
+if(streak === null){
+
+    streak = 0;
+
+}
+
+document.getElementById("streak-count").innerText =
+    streak + " Days";
+
+function increaseStreak(){
+
+    streak++;
+
+    localStorage.setItem("study_streak", streak);
+
+    document.getElementById("streak-count").innerText =
+        streak + " Days";
+
+}
+
+function resetStreak(){
+
+    streak = 0;
+
+    localStorage.setItem("study_streak", streak);
+
+    document.getElementById("streak-count").innerText =
+        streak + " Days";
+
+}
