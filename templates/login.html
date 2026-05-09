@@ -17,35 +17,39 @@
         body{
 
             height:100vh;
+
             display:flex;
             justify-content:center;
             align-items:center;
 
             background:
-            linear-gradient(rgba(15,23,42,0.8),
+            linear-gradient(rgba(15,23,42,0.85),
             rgba(15,23,42,0.9)),
+
             url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600');
 
             background-size:cover;
             background-position:center;
+
+            overflow:hidden;
 
         }
 
         .login-container{
 
             width:90%;
-            max-width:420px;
+            max-width:480px;
 
-            background:rgba(30,41,59,0.9);
+            background:rgba(30,41,59,0.92);
 
-            backdrop-filter:blur(10px);
+            backdrop-filter:blur(12px);
 
-            padding:40px;
+            padding:45px;
 
             border-radius:25px;
 
             box-shadow:
-            0px 0px 30px rgba(0,0,0,0.5);
+            0px 0px 40px rgba(0,0,0,0.5);
 
             text-align:center;
 
@@ -57,7 +61,7 @@
 
             from{
                 opacity:0;
-                transform:translateY(30px);
+                transform:translateY(40px);
             }
 
             to{
@@ -69,23 +73,24 @@
 
         .logo{
 
-            font-size:55px;
-            margin-bottom:15px;
+            font-size:60px;
+            margin-bottom:10px;
 
         }
 
         h1{
 
             color:#38bdf8;
+            font-size:48px;
             margin-bottom:10px;
-            font-size:40px;
 
         }
 
-        p{
+        .subtitle{
 
             color:#cbd5e1;
-            margin-bottom:30px;
+            margin-bottom:35px;
+            font-size:20px;
 
         }
 
@@ -100,19 +105,19 @@
 
             width:100%;
 
-            padding:16px;
+            padding:18px;
 
             border:none;
 
             outline:none;
 
-            border-radius:12px;
+            border-radius:14px;
 
             background:#0f172a;
 
             color:white;
 
-            font-size:16px;
+            font-size:17px;
 
         }
 
@@ -120,19 +125,19 @@
 
             width:100%;
 
-            padding:16px;
+            padding:18px;
 
-            margin-top:25px;
+            margin-top:30px;
 
             border:none;
 
-            border-radius:12px;
+            border-radius:14px;
 
             background:#2563eb;
 
             color:white;
 
-            font-size:18px;
+            font-size:20px;
 
             cursor:pointer;
 
@@ -149,8 +154,9 @@
 
         .extra{
 
-            margin-top:20px;
+            margin-top:25px;
             color:#cbd5e1;
+            font-size:17px;
 
         }
 
@@ -163,15 +169,27 @@
 
         .features{
 
-            margin-top:30px;
+            margin-top:35px;
             text-align:left;
+
+            background:#0f172a;
+            padding:20px;
+            border-radius:15px;
+
+        }
+
+        .features h3{
+
+            margin-bottom:15px;
+            color:#38bdf8;
 
         }
 
         .features p{
 
-            margin-top:10px;
+            margin-top:12px;
             color:#e2e8f0;
+            font-size:17px;
 
         }
 
@@ -191,16 +209,18 @@
 
     <h1>Manjora AI</h1>
 
-    <p>
-        Your Smart Learning & Productivity Platform
+    <p class="subtitle">
+
+        Smart Learning & Productivity Platform
+
     </p>
 
     <form action="/dashboard">
 
         <div class="input-box">
 
-            <input type="email"
-            placeholder="Enter Email"
+            <input type="text"
+            placeholder="Enter Username"
             required>
 
         </div>
@@ -235,11 +255,19 @@
 
     <div class="features">
 
-        <p>✅ Study Planner</p>
+        <h3>✨ Platform Features</h3>
+
+        <p>✅ Daily Study Planner</p>
+
         <p>✅ UPSC Learning Hub</p>
+
         <p>✅ Career Roadmaps</p>
-        <p>✅ Books & Lectures</p>
+
+        <p>✅ Books & YouTube Lectures</p>
+
         <p>✅ Productivity Dashboard</p>
+
+        <p>✅ Smart Educational Resources</p>
 
     </div>
 
