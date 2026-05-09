@@ -179,6 +179,25 @@
 
     <div class="planner-box">
 
+        <h2>📊 Study Progress</h2>
+
+        <p>Total Tasks: <span id="total-tasks">0</span></p>
+
+        <p>Completed Tasks: <span id="completed-tasks">0</span></p>
+
+        <div style="background:#334155;border-radius:10px;height:25px;overflow:hidden;">
+
+            <div id="progress-bar"
+            style="height:100%;width:0%;background:#22c55e;text-align:center;line-height:25px;">
+            0%
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="planner-box">
+
         <input type="text" id="time" placeholder="Enter Time">
 
         <input type="text" id="task" placeholder="Enter Task">
@@ -231,6 +250,29 @@
 
 <script>
 
+let totalTasks = 0;
+let completedTasks = 0;
+
+function updateProgress(){
+
+    document.getElementById("total-tasks").innerText = totalTasks;
+
+    document.getElementById("completed-tasks").innerText = completedTasks;
+
+    let progress = 0;
+
+    if(totalTasks > 0){
+
+        progress = (completedTasks / totalTasks) * 100;
+
+    }
+
+    document.getElementById("progress-bar").style.width = progress + "%";
+
+    document.getElementById("progress-bar").innerText = Math.round(progress) + "%";
+
+}
+
 function addTask(){
 
     let time = document.getElementById("time").value;
@@ -245,6 +287,10 @@ function addTask(){
 
     }
 
+    totalTasks++;
+
+    updateProgress();
+
     let taskList = document.getElementById("task-list");
 
     let div = document.createElement("div");
@@ -254,10 +300,14 @@ function addTask(){
     div.innerHTML = `
 
         <div>
+
+            <input type="checkbox" onchange="completeTask(this)">
+
             <b>${time}</b> - ${task}
+
         </div>
 
-        <button class="delete-btn" onclick="this.parentElement.remove()">
+        <button class="delete-btn" onclick="deleteTask(this)">
             Delete
         </button>
 
@@ -268,6 +318,42 @@ function addTask(){
     document.getElementById("time").value = "";
 
     document.getElementById("task").value = "";
+
+}
+
+function completeTask(checkbox){
+
+    if(checkbox.checked){
+
+        completedTasks++;
+
+    }else{
+
+        completedTasks--;
+
+    }
+
+    updateProgress();
+
+}
+
+function deleteTask(button){
+
+    let parent = button.parentElement;
+
+    let checkbox = parent.querySelector("input");
+
+    if(checkbox.checked){
+
+        completedTasks--;
+
+    }
+
+    totalTasks--;
+
+    updateProgress();
+
+    parent.remove();
 
 }
 
