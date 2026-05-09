@@ -3,50 +3,257 @@
 
 <head>
 
-<title>Career Guidance</title>
+    <title>Career Roadmaps | Manjora AI</title>
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            background:#0f172a;
+            color:white;
+        }
+
+        .navbar{
+
+            background:#1e293b;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+        }
+
+        .navbar h2{
+
+            margin:0;
+            color:#38bdf8;
+
+        }
+
+        .navbar a{
+
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+
+        }
+
+        .container{
+
+            width:90%;
+            max-width:1200px;
+            margin:auto;
+            padding:30px;
+
+        }
+
+        h1{
+
+            text-align:center;
+            margin-bottom:40px;
+
+        }
+
+        .roadmap-grid{
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:25px;
+
+        }
+
+        .roadmap-card{
+
+            background:#1e293b;
+            padding:25px;
+            border-radius:20px;
+            transition:0.3s;
+            box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+
+        }
+
+        .roadmap-card:hover{
+
+            transform:translateY(-10px);
+
+        }
+
+        .roadmap-card h2{
+
+            color:#38bdf8;
+
+        }
+
+        ul{
+
+            padding-left:20px;
+
+        }
+
+        li{
+
+            margin-top:10px;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+            margin-top:20px;
+            padding:10px 20px;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+
+        }
+
+        .btn:hover{
+
+            background:#1d4ed8;
+
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="navbar">
 
-<h1>🎯 Career Roadmap Generator</h1>
+    <h2>🚀 Manjora AI</h2>
 
-<select id="careerGoal">
+    <div>
 
-    <option value="">
-        Select Career Goal
-    </option>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/planner">Planner</a>
 
-    <option value="IAS Officer">
-        IAS Officer
-    </option>
-
-    <option value="Full Stack Developer">
-        Full Stack Developer
-    </option>
-
-    <option value="AI Engineer">
-        AI Engineer
-    </option>
-
-</select>
-
-<button onclick="getRoadmap()">
-
-    Generate Roadmap
-
-</button>
-
-<ul id="roadmapList"></ul>
+    </div>
 
 </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<div class="container">
+
+    <h1>🎯 Career Roadmaps</h1>
+
+    <div class="roadmap-grid">
+
+        <div class="roadmap-card">
+
+            <h2>💻 Software Engineer</h2>
+
+            <ul>
+
+                <li>Learn C / C++ / Python</li>
+                <li>Data Structures & Algorithms</li>
+                <li>Build Projects</li>
+                <li>Git & GitHub</li>
+                <li>Interview Preparation</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+        <div class="roadmap-card">
+
+            <h2>🤖 AI / ML Engineer</h2>
+
+            <ul>
+
+                <li>Python Programming</li>
+                <li>Machine Learning</li>
+                <li>Deep Learning</li>
+                <li>TensorFlow & PyTorch</li>
+                <li>AI Projects</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+        <div class="roadmap-card">
+
+            <h2>📚 UPSC Aspirant</h2>
+
+            <ul>
+
+                <li>NCERT Preparation</li>
+                <li>Current Affairs</li>
+                <li>Optional Subject</li>
+                <li>Answer Writing</li>
+                <li>Mock Tests</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+        <div class="roadmap-card">
+
+            <h2>🛡 Cybersecurity</h2>
+
+            <ul>
+
+                <li>Networking Basics</li>
+                <li>Linux Fundamentals</li>
+                <li>Ethical Hacking</li>
+                <li>Penetration Testing</li>
+                <li>Security Certifications</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+        <div class="roadmap-card">
+
+            <h2>🌐 Full Stack Developer</h2>
+
+            <ul>
+
+                <li>HTML, CSS, JavaScript</li>
+                <li>React.js</li>
+                <li>Flask / Node.js</li>
+                <li>Databases</li>
+                <li>Deployment</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+        <div class="roadmap-card">
+
+            <h2>📊 Data Scientist</h2>
+
+            <ul>
+
+                <li>Python & Statistics</li>
+                <li>Pandas & NumPy</li>
+                <li>Data Visualization</li>
+                <li>Machine Learning</li>
+                <li>Real-world Projects</li>
+
+            </ul>
+
+            <a href="#" class="btn">Start Learning</a>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
+
 </html>
