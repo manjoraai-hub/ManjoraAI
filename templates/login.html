@@ -195,11 +195,14 @@
 
         </p>
 
-        <form action="/dashboard">
+        <!-- LOGIN FORM -->
+
+        <form method="POST">
 
             <div class="input-group">
 
                 <input type="text"
+                name="username"
                 placeholder="Enter Username"
                 required>
 
@@ -208,12 +211,14 @@
             <div class="input-group">
 
                 <input type="password"
+                name="password"
                 placeholder="Enter Password"
                 required>
 
             </div>
 
-            <button class="login-btn">
+            <button type="submit"
+            class="login-btn">
 
                 Login
 
@@ -238,10 +243,16 @@
             <h3>✨ Features</h3>
 
             <p>✅ Study Planner</p>
+
             <p>✅ UPSC Learning Hub</p>
+
             <p>✅ Career Roadmaps</p>
+
             <p>✅ Books & Lectures</p>
+
             <p>✅ Productivity Dashboard</p>
+
+            <p>✅ Personal Progress Tracking</p>
 
         </div>
 
