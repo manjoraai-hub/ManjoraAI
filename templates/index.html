@@ -1,145 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Manjora AI</title>
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Manjora AI</title>
 
     <style>
 
-        body{
+        *{
             margin:0;
             padding:0;
-            font-family:Arial;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+
             background:#0f172a;
             color:white;
+
         }
 
         .navbar{
 
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
+            width:100%;
+
             padding:20px 50px;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
             background:#1e293b;
+
+            position:fixed;
+
+            top:0;
+
+            z-index:1000;
 
         }
 
         .logo{
 
-            font-size:28px;
-            font-weight:bold;
+            font-size:32px;
+
             color:#38bdf8;
+
+            font-weight:bold;
 
         }
 
-        .menu a{
+        .nav-links a{
 
             color:white;
+
             text-decoration:none;
+
             margin-left:25px;
-            font-size:16px;
 
-        }
-
-        .menu a:hover{
-
-            color:#38bdf8;
+            font-size:18px;
 
         }
 
         .hero{
 
+            height:100vh;
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+            align-items:center;
+
             text-align:center;
-            padding:100px 20px;
+
+            padding:20px;
+
+            background:
+            linear-gradient(rgba(15,23,42,0.85),
+            rgba(15,23,42,0.9)),
+
+            url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600');
+
+            background-size:cover;
+
+            background-position:center;
 
         }
 
         .hero h1{
 
-            font-size:60px;
-            margin-bottom:20px;
-
-        }
-
-        .hero span{
+            font-size:70px;
 
             color:#38bdf8;
+
+            margin-bottom:20px;
 
         }
 
         .hero p{
 
-            font-size:20px;
-            color:#cbd5e1;
-            max-width:700px;
-            margin:auto;
+            font-size:24px;
 
-        }
+            max-width:800px;
 
-        .buttons{
+            color:#e2e8f0;
 
-            margin-top:35px;
+            margin-bottom:40px;
 
         }
 
         .btn{
 
-            display:inline-block;
-            padding:15px 30px;
-            margin:10px;
-            border-radius:12px;
+            padding:16px 35px;
+
+            background:#2563eb;
+
+            color:white;
+
             text-decoration:none;
-            font-size:18px;
+
+            border-radius:12px;
+
+            font-size:20px;
+
             transition:0.3s;
 
         }
 
-        .primary{
-
-            background:#2563eb;
-            color:white;
-
-        }
-
-        .primary:hover{
+        .btn:hover{
 
             background:#1d4ed8;
 
-        }
-
-        .secondary{
-
-            background:#1e293b;
-            color:white;
-            border:1px solid #38bdf8;
-
-        }
-
-        .secondary:hover{
-
-            background:#38bdf8;
+            transform:scale(1.05);
 
         }
 
         .features{
 
+            padding:100px 50px;
+
+            text-align:center;
+
+        }
+
+        .features h2{
+
+            font-size:50px;
+
+            color:#38bdf8;
+
+            margin-bottom:50px;
+
+        }
+
+        .feature-grid{
+
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:25px;
-            padding:50px;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(280px,1fr));
+
+            gap:30px;
 
         }
 
         .feature-card{
 
             background:#1e293b;
-            padding:30px;
+
+            padding:35px;
+
             border-radius:20px;
-            box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+
             transition:0.3s;
+
+            box-shadow:
+            0px 0px 15px rgba(0,0,0,0.3);
 
         }
 
@@ -153,14 +200,30 @@
 
             color:#38bdf8;
 
+            margin-bottom:15px;
+
+            font-size:28px;
+
+        }
+
+        .feature-card p{
+
+            color:#cbd5e1;
+
+            margin-bottom:25px;
+
+            font-size:18px;
+
         }
 
         footer{
 
             text-align:center;
-            padding:25px;
+
+            padding:30px;
+
             background:#1e293b;
-            margin-top:40px;
+
             color:#94a3b8;
 
         }
@@ -171,82 +234,136 @@
 
 <body>
 
-<div class="navbar">
+    <div class="navbar">
 
-    <div class="logo">🚀 Manjora AI</div>
+        <div class="logo">
 
-    <div class="menu">
+            🚀 Manjora AI
 
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/planner">Planner</a>
-        <a href="/career">Career</a>
-        <a href="/books">Books</a>
+        </div>
 
-    </div>
+        <div class="nav-links">
 
-</div>
+            <a href="/">Home</a>
 
-<div class="hero">
+            <a href="/login">Login</a>
 
-    <h1>Build Your Future With <span>Manjora AI</span></h1>
+            <a href="/register">Register</a>
 
-    <p>
-        Smart AI-powered learning and productivity platform for students,
-        programmers, and UPSC aspirants.
-    </p>
-
-    <div class="buttons">
-
-        <a href="/dashboard" class="btn primary">Get Started</a>
-
-        <a href="/planner" class="btn secondary">Study Planner</a>
+        </div>
 
     </div>
 
-</div>
+    <section class="hero">
 
-<div class="features">
+        <h1>Welcome to Manjora AI</h1>
 
-    <div class="feature-card">
+        <p>
 
-        <h3>📚 Smart Learning</h3>
+            Smart Learning & Productivity Platform
+            for Students, UPSC Aspirants and Developers.
 
-        <p>Organize studies efficiently with AI-powered planning tools.</p>
+        </p>
 
-    </div>
+        <a href="/login" class="btn">
 
-    <div class="feature-card">
+            Get Started
 
-        <h3>🎯 Career Guidance</h3>
+        </a>
 
-        <p>Explore career roadmaps and future opportunities.</p>
+    </section>
 
-    </div>
+    <section class="features">
 
-    <div class="feature-card">
+        <h2>✨ Platform Features</h2>
 
-        <h3>📰 Current Affairs</h3>
+        <div class="feature-grid">
 
-        <p>Stay updated with latest news and educational content.</p>
+            <div class="feature-card">
 
-    </div>
+                <h3>📅 Study Planner</h3>
 
-    <div class="feature-card">
+                <p>
 
-        <h3>📖 Digital Library</h3>
+                    Create schedules, manage tasks,
+                    track progress and productivity.
 
-        <p>Access books, notes, and learning resources easily.</p>
+                </p>
 
-    </div>
+                <a href="/login" class="btn">
 
-</div>
+                    Open Planner
 
-<footer>
+                </a>
 
-    © 2026 Manjora AI | Built by Manjunath S
+            </div>
 
-</footer>
+            <div class="feature-card">
+
+                <h3>🎯 Career Roadmaps</h3>
+
+                <p>
+
+                    Explore Software, AI, UPSC,
+                    Cybersecurity and more careers.
+
+                </p>
+
+                <a href="/login" class="btn">
+
+                    Explore Careers
+
+                </a>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>📚 Books & Lectures</h3>
+
+                <p>
+
+                    Access books, study notes,
+                    YouTube lectures and UPSC resources.
+
+                </p>
+
+                <a href="/login" class="btn">
+
+                    Open Resources
+
+                </a>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h3>🔥 Productivity Tools</h3>
+
+                <p>
+
+                    Pomodoro timer, goal tracking,
+                    motivation and study streaks.
+
+                </p>
+
+                <a href="/login" class="btn">
+
+                    Start Productivity
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        © 2026 Manjora AI | Smart Education Platform
+
+    </footer>
 
 </body>
 
