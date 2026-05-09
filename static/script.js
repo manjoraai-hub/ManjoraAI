@@ -434,3 +434,80 @@ function toggleDarkMode(){
 }
 
 console.log("AI EDU MENTOR Loaded Successfully");
+let timer;
+let minutes = 25;
+let seconds = 0;
+let running = false;
+
+function updateTimer(){
+
+    let displayMinutes = String(minutes).padStart(2,'0');
+
+    let displaySeconds = String(seconds).padStart(2,'0');
+
+    document.getElementById("timer").innerText =
+        `${displayMinutes}:${displaySeconds}`;
+
+}
+
+function startTimer(){
+
+    if(running) return;
+
+    running = true;
+
+    timer = setInterval(() => {
+
+        if(seconds === 0){
+
+            if(minutes === 0){
+
+                clearInterval(timer);
+
+                alert("⏰ Focus Session Completed!");
+
+                running = false;
+
+                return;
+
+            }
+
+            minutes--;
+
+            seconds = 59;
+
+        }
+
+        else{
+
+            seconds--;
+
+        }
+
+        updateTimer();
+
+    },1000);
+
+}
+
+function pauseTimer(){
+
+    clearInterval(timer);
+
+    running = false;
+
+}
+
+function resetTimer(){
+
+    clearInterval(timer);
+
+    running = false;
+
+    minutes = 25;
+
+    seconds = 0;
+
+    updateTimer();
+
+}
