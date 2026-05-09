@@ -28,7 +28,7 @@ def ask_ai():
             messages=[
                 {
                     "role": "system",
-                    "content": "You are Manjora AI, an AI mentor for students, UPSC aspirants and programmers."
+                    "content": "You are Manjora AI, a smart AI mentor."
                 },
                 {
                     "role": "user",
