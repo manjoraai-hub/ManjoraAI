@@ -68,10 +68,11 @@ def affairs():
     articles = [
 
         {
-            "title": "India launches new education initiative",
+            "title":
+            "India launches AI-powered education reforms",
 
             "description":
-            "New reforms introduced for digital learning and smart classrooms.",
+            "Government introduces smart classrooms and digital learning initiatives.",
 
             "url":
             "https://www.thehindu.com/news/national/",
@@ -81,16 +82,31 @@ def affairs():
         },
 
         {
-            "title": "AI transforming education sector",
+            "title":
+            "UPSC aspirants adopting AI tools for preparation",
 
             "description":
-            "Artificial Intelligence helps students learn faster and improve productivity.",
+            "Students increasingly use AI-based platforms for study planning and revision.",
 
             "url":
             "https://indianexpress.com/latest-news/",
 
             "image":
             "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+        },
+
+        {
+            "title":
+            "Technology transforming competitive exam learning",
+
+            "description":
+            "AI and productivity platforms are reshaping online education systems.",
+
+            "url":
+            "https://www.hindustantimes.com/",
+
+            "image":
+            "https://images.unsplash.com/photo-1455390582262-044cdead277a"
         }
 
     ]
