@@ -1,71 +1,416 @@
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Manjora AI Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+
+            background:
+            linear-gradient(
+            135deg,
+            #0f172a,
+            #1e293b);
+
+            color:white;
+
+            min-height:100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:20px 40px;
+
+            background:rgba(255,255,255,0.05);
+
+            backdrop-filter:blur(10px);
+
+        }
+
+        .navbar h2{
+
+            color:#38bdf8;
+
+            font-size:34px;
+        }
+
+        .menu a{
+
+            color:white;
+
+            text-decoration:none;
+
+            margin-left:25px;
+
+            font-size:18px;
+
+            transition:0.3s;
+        }
+
+        .menu a:hover{
+
+            color:#38bdf8;
+        }
+
+        /* HERO */
+
+        .hero{
+
+            text-align:center;
+
+            padding:70px 20px;
+        }
+
+        .hero h1{
+
+            font-size:65px;
+
+            color:#38bdf8;
+        }
+
+        .hero p{
+
+            margin-top:20px;
+
+            font-size:24px;
+
+            color:#cbd5e1;
+        }
+
+        /* CARDS */
+
+        .cards{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(280px,1fr));
+
+            gap:30px;
+
+            padding:40px;
+        }
+
+        .card{
+
+            background:rgba(255,255,255,0.08);
+
+            padding:30px;
+
+            border-radius:25px;
+
+            transition:0.3s;
+
+            box-shadow:
+            0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .card:hover{
+
+            transform:translateY(-10px);
+
+            background:rgba(255,255,255,0.12);
+        }
+
+        .card h2{
+
+            color:#38bdf8;
+
+            margin-bottom:15px;
+
+            font-size:30px;
+        }
+
+        .card p{
+
+            color:#e2e8f0;
+
+            line-height:1.7;
+
+            font-size:18px;
+        }
+
+        .btn{
+
+            display:inline-block;
+
+            margin-top:20px;
+
+            padding:12px 22px;
+
+            background:#2563eb;
+
+            color:white;
+
+            text-decoration:none;
+
+            border-radius:12px;
+
+            transition:0.3s;
+        }
+
+        .btn:hover{
+
+            background:#1d4ed8;
+
+            transform:scale(1.05);
+        }
+
+        /* NEWS */
+
+        .news-section{
+
+            text-align:center;
+
+            padding:50px 20px;
+        }
+
+        .news-section h2{
+
+            color:#38bdf8;
+
+            font-size:50px;
+        }
+
+        .news-section p{
+
+            margin-top:20px;
+
+            color:#cbd5e1;
+
+            font-size:22px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px){
+
+            .navbar{
+
+                flex-direction:column;
+            }
+
+            .menu{
+
+                margin-top:15px;
+            }
+
+            .menu a{
+
+                display:inline-block;
+
+                margin:10px;
+            }
+
+            .hero h1{
+
+                font-size:42px;
+            }
+
+            .hero p{
+
+                font-size:20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <h2>
+
+        🚀 Manjora AI
+
+    </h2>
+
+    <div class="menu">
+
+        <a href="/">Home</a>
+
+        <a href="/affairs">Current Affairs</a>
+
+        <a href="#">Planner</a>
+
+        <a href="#">Career</a>
+
+        <a href="#">Books</a>
+
+    </div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <h1>
+
+        Welcome to Manjora AI
+
+    </h1>
+
+    <p>
+
+        Smart Learning & Productivity Platform
+
+    </p>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
     <div class="card">
 
-        <h3>
-            📖 Books & Lectures
-        </h3>
+        <h2>
+
+            📚 Study Planner
+
+        </h2>
 
         <p>
-            Access books, notes and YouTube lectures for learning.
+
+            Organize your study schedules,
+            manage productivity and complete targets.
+
         </p>
 
-        <a href="/books" class="btn">
-            Open Library
+        <a href="#"
+        class="btn">
+
+            Open
+
         </a>
 
     </div>
 
     <div class="card">
 
-        <h3>
+        <h2>
+
+            🎯 Career Roadmap
+
+        </h2>
+
+        <p>
+
+            Explore career guidance,
+            skills and learning paths.
+
+        </p>
+
+        <a href="#"
+        class="btn">
+
+            Explore
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            📰 Current Affairs
+
+        </h2>
+
+        <p>
+
+            Read latest daily news,
+            UPSC current affairs and technology updates.
+
+        </p>
+
+        <a href="/affairs"
+        class="btn">
+
+            Open News
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
             🤖 AI Chatbot
-        </h3>
+
+        </h2>
 
         <p>
-            Ask doubts, learn coding, UPSC preparation and productivity tips.
+
+            Ask coding doubts,
+            UPSC questions and productivity tips.
+
         </p>
 
-        <a href="#" class="btn">
-            Launch AI
-        </a>
+        <a href="#"
+        class="btn">
 
-    </div>
+            Launch
 
-    <div class="card">
-
-        <h3>
-            🔔 Smart Reminders
-        </h3>
-
-        <p>
-            Manage tasks, reminders and daily targets efficiently.
-        </p>
-
-        <a href="#" class="btn">
-            Manage
         </a>
 
     </div>
 
 </div>
 
-<!-- DAILY NEWS -->
+<!-- NEWS -->
 
 <div class="news-section">
 
     <h2>
+
         🔥 Daily News Updates
+
     </h2>
 
     <p>
-        Stay updated with live headlines, UPSC current affairs,
-        technology news, economy, science and world affairs.
+
+        Stay updated with live headlines,
+        education news and world affairs.
+
     </p>
 
-    <a href="/affairs" class="btn">
+    <a href="/affairs"
+    class="btn">
+
         Load Latest News
+
     </a>
 
 </div>
