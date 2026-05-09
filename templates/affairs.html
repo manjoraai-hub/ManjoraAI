@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Current Affairs</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body id="body">
+
+<div class="container">
+
+<h1>📰 Current Affairs</h1>
+
+<button onclick="loadNews()">
+
+    Load Latest News
+
+</button>
+
+<div id="newsContainer"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

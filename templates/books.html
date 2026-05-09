@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Books</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Book Recommendations</h1>
+
+<select id="category">
+
+    <option value="">Select Category</option>
+
+    <option value="UPSC">UPSC</option>
+
+    <option value="Programming">Programming</option>
+
+    <option value="Engineering">Engineering</option>
+
+</select>
+
+<select id="subject">
+
+    <option value="">Select Subject</option>
+
+    <option value="Polity">Polity</option>
+
+    <option value="History">History</option>
+
+    <option value="Python">Python</option>
+
+    <option value="DSA">DSA</option>
+
+    <option value="VLSI">VLSI</option>
+
+</select>
+
+<button onclick="getBooks()">
+
+    Show Books
+
+</button>
+
+<ul id="bookList"></ul>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

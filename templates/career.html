@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Career Guidance</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎯 Career Roadmap Generator</h1>
+
+<select id="careerGoal">
+
+    <option value="">
+        Select Career Goal
+    </option>
+
+    <option value="IAS Officer">
+        IAS Officer
+    </option>
+
+    <option value="Full Stack Developer">
+        Full Stack Developer
+    </option>
+
+    <option value="AI Engineer">
+        AI Engineer
+    </option>
+
+</select>
+
+<button onclick="getRoadmap()">
+
+    Generate Roadmap
+
+</button>
+
+<ul id="roadmapList"></ul>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

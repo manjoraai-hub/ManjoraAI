@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Study Planner</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body id="body">
+
+<div class="container">
+
+<button onclick="toggleDarkMode()" id="darkBtn">
+
+🌙 Dark Mode
+
+</button>
+
+<h1>🧠 AI Study Planner</h1>
+
+<input
+type="text"
+id="subject"
+placeholder="Enter Subject">
+
+<input
+type="number"
+id="hours"
+placeholder="Study Hours">
+
+<button onclick="addStudyTask()">
+
+    Add Study Task
+
+</button>
+
+<ul id="studyList"></ul>
+
+<h1 style="margin-top:40px;">
+    📅 Smart Timetable
+</h1>
+
+<button onclick="generateTimetable()">
+
+    Generate Timetable
+
+</button>
+
+<div id="timetable"></div>
+
+<h1 style="margin-top:40px;">
+    ⏳ Pomodoro Timer
+</h1>
+
+<div id="timer">
+
+    25:00
+
+</div>
+
+<button onclick="startTimer()">
+
+    Start Timer
+
+</button>
+
+<button onclick="resetTimer()">
+
+    Reset Timer
+
+</button>
+
+<h1 style="margin-top:50px;">
+    📊 Productivity Analytics
+</h1>
+
+<div class="analytics">
+
+    <div class="analytics-card">
+
+        <h2 id="totalTasks">
+            0
+        </h2>
+
+        <p>Total Tasks</p>
+
+    </div>
+
+    <div class="analytics-card">
+
+        <h2 id="totalHours">
+            0
+        </h2>
+
+        <p>Total Study Hours</p>
+
+    </div>
+
+</div>
+
+<canvas id="studyChart"></canvas>
+
+<h1 style="margin-top:50px;">
+    📄 Export Study Plan
+</h1>
+
+<a href="/download_pdf">
+
+<button>
+
+    Download PDF
+
+</button>
+
+</a>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

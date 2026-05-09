@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI EDU MENTOR</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body id="body">
+
+<div class="container">
+
+<button onclick="toggleDarkMode()" id="darkBtn">
+
+🌙 Dark Mode
+
+</button>
+
+<h1>🚀 AI EDU MENTOR</h1>
+
+<p class="subtitle">
+
+Smart Learning Platform for Students,
+UPSC Aspirants & Professionals
+
+</p>
+
+<div class="cards">
+
+<a href="/books" class="card">
+
+📚
+
+<h2>UPSC Guidance</h2>
+
+<p>
+
+Study plans, current affairs,
+booklists and strategy.
+
+</p>
+
+</a>
+
+<a href="/planner" class="card">
+
+💻
+
+<h2>Programming</h2>
+
+<p>
+
+Learn coding, DSA,
+projects and placements.
+
+</p>
+
+</a>
+
+<a href="/career" class="card">
+
+🎯
+
+<h2>Career Roadmaps</h2>
+
+<p>
+
+Personalized learning
+paths for every career goal.
+
+</p>
+
+</a>
+
+<a href="/chatbot" class="card">
+
+🤖
+
+<h2>AI Mentor</h2>
+
+<p>
+
+Ask career and study
+related questions instantly.
+
+</p>
+
+</a>
+
+</div>
+
+<a href="/login">
+
+<button>
+
+Start Learning
+
+</button>
+
+</a>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

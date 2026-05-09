@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Smart Reminders</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body id="body">
+
+<div class="container">
+
+<button onclick="toggleDarkMode()" id="darkBtn">
+
+🌙 Dark Mode
+
+</button>
+
+<h1>🔔 Smart Reminder System</h1>
+
+<input
+type="text"
+id="reminderInput"
+placeholder="Enter Reminder">
+
+<button onclick="addReminder()">
+
+    Add Reminder
+
+</button>
+
+<div id="reminderList"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

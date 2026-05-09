@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Mentor Chatbot</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 AI Mentor</h1>
+
+<div id="chatBox"></div>
+
+<input
+type="text"
+id="userMessage"
+placeholder="Ask your study or career question">
+
+<button onclick="sendMessage()">
+
+    Send
+
+</button>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
