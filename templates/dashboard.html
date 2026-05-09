@@ -5,46 +5,104 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>Manjora AI Dashboard</title>
+    <title>Dashboard - Manjora AI</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
+    <nav class="navbar">
+
+        <h2>🚀 Manjora AI</h2>
+
+        <div>
+
+            <a href="/">Home</a>
+
+            <a href="/dashboard">Dashboard</a>
+
+            <a href="/chatbot">AI Mentor</a>
+
+            <a href="/planner">Planner</a>
+
+        </div>
+
+    </nav>
+
     <div class="dashboard-container">
 
-        <h1>🚀 Manjora AI Dashboard</h1>
+        <h1>
 
-        <p>Welcome to your AI learning platform.</p>
+            Welcome to Manjora AI Dashboard
+
+        </h1>
+
+        <p>
+
+            Your smart learning and productivity center
+
+        </p>
 
         <div class="dashboard-grid">
 
-            <a href="/planner" class="dashboard-card">
-                📚 Study Planner
+            <a href="/planner"
+                class="dashboard-card">
+
+                📚
+
+                <h2>Study Planner</h2>
+
             </a>
 
-            <a href="/career" class="dashboard-card">
-                🎯 Career Roadmaps
+            <a href="/chatbot"
+                class="dashboard-card">
+
+                🤖
+
+                <h2>AI Mentor</h2>
+
             </a>
 
-            <a href="/affairs" class="dashboard-card">
-                📰 Current Affairs
+            <a href="/affairs"
+                class="dashboard-card">
+
+                📰
+
+                <h2>Current Affairs</h2>
+
             </a>
 
-            <a href="/chatbot" class="dashboard-card">
-                🤖 AI Chatbot
+            <a href="/career"
+                class="dashboard-card">
+
+                🎯
+
+                <h2>Career Roadmaps</h2>
+
             </a>
 
-            <a href="/reminder" class="dashboard-card">
-                ⏰ Reminders
+            <a href="/books"
+                class="dashboard-card">
+
+                📖
+
+                <h2>Books</h2>
+
             </a>
 
-            <a href="/" class="dashboard-card">
-                🏠 Home
+            <a href="/reminder"
+                class="dashboard-card">
+
+                ⏰
+
+                <h2>Reminders</h2>
+
             </a>
 
         </div>
