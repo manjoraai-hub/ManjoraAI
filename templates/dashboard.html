@@ -1,113 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
-    <meta charset="UTF-8">
+    <title>Manjora AI Dashboard</title>
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <style>
 
-    <title>Dashboard - Manjora AI</title>
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            background:#0f172a;
+            color:white;
+        }
 
-    <link rel="stylesheet"
-        href="{{ url_for('static', filename='style.css') }}">
+        .navbar{
+
+            background:#1e293b;
+            padding:15px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+        }
+
+        .navbar h2{
+
+            margin:0;
+            color:#38bdf8;
+
+        }
+
+        .menu a{
+
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-size:16px;
+
+        }
+
+        .menu a:hover{
+
+            color:#38bdf8;
+
+        }
+
+        .hero{
+
+            text-align:center;
+            padding:50px 20px;
+
+        }
+
+        .hero h1{
+
+            font-size:45px;
+            margin-bottom:10px;
+
+        }
+
+        .hero p{
+
+            font-size:18px;
+            color:#cbd5e1;
+
+        }
+
+        .cards{
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+            padding:30px;
+
+        }
+
+        .card{
+
+            background:#1e293b;
+            padding:25px;
+            border-radius:20px;
+            transition:0.3s;
+            box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+
+        }
+
+        .card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        .card h3{
+
+            margin-top:0;
+            color:#38bdf8;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+            margin-top:15px;
+            padding:10px 20px;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+
+        }
+
+        .btn:hover{
+
+            background:#1d4ed8;
+
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-    <nav class="navbar">
+<div class="navbar">
 
-        <h2>🚀 Manjora AI</h2>
+    <h2>🚀 Manjora AI</h2>
 
-        <div>
+    <div class="menu">
 
-            <a href="/">Home</a>
-
-            <a href="/dashboard">Dashboard</a>
-
-            <a href="/chatbot">AI Mentor</a>
-
-            <a href="/planner">Planner</a>
-
-        </div>
-
-    </nav>
-
-    <div class="dashboard-container">
-
-        <h1>
-
-            Welcome to Manjora AI Dashboard
-
-        </h1>
-
-        <p>
-
-            Your smart learning and productivity center
-
-        </p>
-
-        <div class="dashboard-grid">
-
-            <a href="/planner"
-                class="dashboard-card">
-
-                📚
-
-                <h2>Study Planner</h2>
-
-            </a>
-
-            <a href="/chatbot"
-                class="dashboard-card">
-
-                🤖
-
-                <h2>AI Mentor</h2>
-
-            </a>
-
-            <a href="/affairs"
-                class="dashboard-card">
-
-                📰
-
-                <h2>Current Affairs</h2>
-
-            </a>
-
-            <a href="/career"
-                class="dashboard-card">
-
-                🎯
-
-                <h2>Career Roadmaps</h2>
-
-            </a>
-
-            <a href="/books"
-                class="dashboard-card">
-
-                📖
-
-                <h2>Books</h2>
-
-            </a>
-
-            <a href="/reminder"
-                class="dashboard-card">
-
-                ⏰
-
-                <h2>Reminders</h2>
-
-            </a>
-
-        </div>
+        <a href="/">Home</a>
+        <a href="/planner">Planner</a>
+        <a href="/career">Career</a>
+        <a href="/books">Books</a>
+        <a href="/affairs">Affairs</a>
 
     </div>
+
+</div>
+
+<div class="hero">
+
+    <h1>Welcome to Manjora AI</h1>
+
+    <p>Your Smart Learning & Productivity Platform</p>
+
+</div>
+
+<div class="cards">
+
+    <div class="card">
+
+        <h3>📚 Study Planner</h3>
+
+        <p>Create and manage your daily study schedule effectively.</p>
+
+        <a href="/planner" class="btn">Open</a>
+
+    </div>
+
+    <div class="card">
+
+        <h3>🎯 Career Roadmap</h3>
+
+        <p>Explore career paths and skill development plans.</p>
+
+        <a href="/career" class="btn">Explore</a>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📰 Current Affairs</h3>
+
+        <p>Stay updated with latest educational and world news.</p>
+
+        <a href="/affairs" class="btn">Read</a>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📖 Books Section</h3>
+
+        <p>Access learning materials and educational resources.</p>
+
+        <a href="/books" class="btn">View</a>
+
+    </div>
+
+</div>
 
 </body>
 
