@@ -1,394 +1,57 @@
-from flask import Flask, render_template, jsonify, request, redirect, send_file
-import sqlite3
+import os
 
-from reportlab.pdfgen import canvas
+from openai import OpenAI
 
-app = Flask(__name__)
+from flask import jsonify, request
 
+client = OpenAI(
 
-# DATABASE SETUP
+    api_key=os.getenv("OPENAI_API_KEY")
 
-def init_db():
+)
 
-    conn = sqlite3.connect('database.db')
+@app.route('/ask_ai', methods=['POST'])
 
-    cursor = conn.cursor()
+def ask_ai():
 
-    cursor.execute('''
+    data = request.get_json()
 
-    CREATE TABLE IF NOT EXISTS users(
+    user_message = data.get('message')
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+    try:
 
-        username TEXT,
+        response = client.chat.completions.create(
 
-        password TEXT
-    )
+            model="gpt-4.1-mini",
 
-    ''')
+            messages=[
 
-    conn.commit()
+                {
+                    "role": "system",
+                    "content": "You are Manjora AI, an advanced AI mentor for education, productivity, coding, UPSC preparation and career guidance."
+                },
 
-    conn.close()
+                {
+                    "role": "user",
+                    "content": user_message
+                }
 
-
-init_db()
-
-
-# HOME PAGE
-
-@app.route('/')
-def home():
-
-    return render_template('index.html')
-
-
-# LOGIN PAGE
-
-@app.route('/login')
-def login():
-
-    return render_template('login.html')
-
-
-# REGISTER PAGE
-
-@app.route('/register')
-def register():
-
-    return render_template('register.html')
-
-
-# REGISTER USER
-
-@app.route('/register_user', methods=['POST'])
-def register_user():
-
-    username = request.form['username']
-
-    password = request.form['password']
-
-    conn = sqlite3.connect('database.db')
-
-    cursor = conn.cursor()
-
-    cursor.execute(
-
-        'INSERT INTO users(username,password) VALUES(?,?)',
-
-        (username, password)
-    )
-
-    conn.commit()
-
-    conn.close()
-
-    return redirect('/login')
-
-
-# LOGIN USER
-
-@app.route('/login_user', methods=['POST'])
-def login_user():
-
-    username = request.form['username']
-
-    password = request.form['password']
-
-    conn = sqlite3.connect('database.db')
-
-    cursor = conn.cursor()
-
-    cursor.execute(
-
-        'SELECT * FROM users WHERE username=? AND password=?',
-
-        (username, password)
-    )
-
-    user = cursor.fetchone()
-
-    conn.close()
-
-    if user:
-
-        return redirect('/dashboard')
-
-    else:
-
-        return "Invalid Username or Password"
-
-
-# DASHBOARD
-
-@app.route('/dashboard')
-def dashboard():
-
-    return render_template('dashboard.html')
-
-
-# BOOKS PAGE
-
-@app.route('/books')
-def books():
-
-    return render_template('books.html')
-
-
-# PLANNER PAGE
-
-@app.route('/planner')
-def planner():
-
-    return render_template('planner.html')
-
-
-# CAREER PAGE
-
-@app.route('/career')
-def career():
-
-    return render_template('career.html')
-
-
-# CURRENT AFFAIRS PAGE
-
-@app.route('/affairs')
-def affairs():
-
-    return render_template('affairs.html')
-
-
-# CHATBOT PAGE
-
-@app.route('/chatbot')
-def chatbot():
-
-    return render_template('chatbot.html')
-
-
-# PDF PAGE
-
-@app.route('/pdf')
-def pdf():
-
-    return render_template('pdf.html')
-
-
-# REMINDER PAGE
-
-@app.route('/reminder')
-def reminder():
-
-    return render_template('reminder.html')
-
-
-# CHATBOT API
-
-@app.route('/chat', methods=['POST'])
-def chat():
-
-    user_message = request.json['message'].lower()
-
-    if "upsc" in user_message:
-
-        reply = "Start with NCERT books, current affairs and mock tests."
-
-    elif "ai engineer" in user_message:
-
-        reply = "Learn Python, Machine Learning and Deep Learning."
-
-    elif "placement" in user_message:
-
-        reply = "Focus on DSA, projects and interview preparation."
-
-    elif "python" in user_message:
-
-        reply = "Practice Python daily and build projects using Flask."
-
-    elif "vlsi" in user_message:
-
-        reply = "Focus on CMOS, Verilog, ASIC and FPGA concepts."
-
-    else:
-
-        reply = "AI Mentor is learning. Please ask study or career related questions."
-
-    return jsonify({
-
-        "reply": reply
-    })
-
-
-# CURRENT AFFAIRS API
-
-@app.route('/get_news')
-def get_news():
-
-    news = [
-
-        "📰 ISRO launches new satellite mission",
-
-        "📰 AI transforming education industry",
-
-        "📰 UPSC releases new exam notification",
-
-        "📰 India advances in semiconductor technology",
-
-        "📰 New startup opportunities for students"
-    ]
-
-    return jsonify(news)
-
-
-# PDF EXPORT
-
-@app.route('/download_pdf')
-def download_pdf():
-
-    pdf_file = "study_plan.pdf"
-
-    c = canvas.Canvas(pdf_file)
-
-    c.setFont("Helvetica-Bold", 20)
-
-    c.drawString(180, 800, "AI EDU MENTOR")
-
-    c.setFont("Helvetica", 14)
-
-    c.drawString(100, 740, "Smart Study Planner Report")
-
-    c.drawString(100, 700, "Stay consistent and achieve your goals.")
-
-    c.drawString(100, 660, "Generated by AI EDU MENTOR")
-
-    c.save()
-
-    return send_file(
-
-        pdf_file,
-
-        as_attachment=True
-    )
-
-
-# BOOK RECOMMENDATION API
-
-@app.route('/get_books')
-def get_books():
-
-    category = request.args.get('category')
-
-    subject = request.args.get('subject')
-
-    books = {
-
-        "UPSC": {
-
-            "Polity": [
-
-                "Indian Polity - M. Laxmikanth",
-
-                "Introduction to Constitution - DD Basu"
-            ],
-
-            "History": [
-
-                "Ancient India - RS Sharma",
-
-                "Medieval India - Satish Chandra"
             ]
-        },
 
-        "Programming": {
+        )
 
-            "Python": [
+        ai_reply = response.choices[0].message.content
 
-                "Python Crash Course",
+        return jsonify({
 
-                "Automate the Boring Stuff"
-            ],
+            'reply': ai_reply
 
-            "DSA": [
+        })
 
-                "DSA Made Easy",
+    except Exception as e:
 
-                "Introduction to Algorithms"
-            ]
-        },
+        return jsonify({
 
-        "Engineering": {
+            'reply': str(e)
 
-            "VLSI": [
-
-                "CMOS VLSI Design",
-
-                "Digital Integrated Circuits"
-            ]
-        }
-    }
-
-    result = books.get(category, {}).get(subject, [])
-
-    return jsonify(result)
-
-
-# CAREER ROADMAP API
-
-@app.route('/get_roadmap')
-def get_roadmap():
-
-    goal = request.args.get('goal')
-
-    roadmaps = {
-
-        "IAS Officer": [
-
-            "Step 1 → Read NCERT Books",
-
-            "Step 2 → Study Polity & History",
-
-            "Step 3 → Current Affairs Daily",
-
-            "Step 4 → Mock Tests",
-
-            "Step 5 → Revision Strategy"
-        ],
-
-        "Full Stack Developer": [
-
-            "Step 1 → Learn HTML",
-
-            "Step 2 → Learn CSS",
-
-            "Step 3 → Learn JavaScript",
-
-            "Step 4 → Learn Flask/React",
-
-            "Step 5 → Build Projects"
-        ],
-
-        "AI Engineer": [
-
-            "Step 1 → Learn Python",
-
-            "Step 2 → Learn Machine Learning",
-
-            "Step 3 → Deep Learning",
-
-            "Step 4 → AI Projects",
-
-            "Step 5 → Deploy Models"
-        ]
-    }
-
-    result = roadmaps.get(goal, [])
-
-    return jsonify(result)
-
-
-# RUN APP
-
-if __name__ == '__main__':
-
-    app.run(debug=True)
+        })
