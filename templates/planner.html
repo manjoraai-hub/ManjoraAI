@@ -1,92 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
-    <meta charset="UTF-8">
+    <title>Manjora AI Planner</title>
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <style>
 
-    <title>Study Planner - Manjora AI</title>
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            background:#0f172a;
+            color:white;
+        }
 
-    <link rel="stylesheet"
-        href="{{ url_for('static', filename='style.css') }}">
+        .navbar{
+
+            background:#1e293b;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+        }
+
+        .navbar h2{
+
+            margin:0;
+            color:#38bdf8;
+
+        }
+
+        .navbar a{
+
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+
+        }
+
+        .container{
+
+            width:90%;
+            max-width:1000px;
+            margin:auto;
+            padding:30px;
+
+        }
+
+        h1{
+
+            text-align:center;
+            margin-bottom:30px;
+
+        }
+
+        .planner-box{
+
+            background:#1e293b;
+            padding:25px;
+            border-radius:20px;
+            margin-bottom:30px;
+
+        }
+
+        input{
+
+            width:40%;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            margin:10px;
+
+        }
+
+        button{
+
+            padding:12px 20px;
+            border:none;
+            border-radius:10px;
+            background:#2563eb;
+            color:white;
+            cursor:pointer;
+
+        }
+
+        button:hover{
+
+            background:#1d4ed8;
+
+        }
+
+        .task{
+
+            background:#334155;
+            padding:15px;
+            border-radius:12px;
+            margin-top:15px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+        }
+
+        .delete-btn{
+
+            background:#ef4444;
+
+        }
+
+        .delete-btn:hover{
+
+            background:#dc2626;
+
+        }
+
+        .section-title{
+
+            margin-top:40px;
+            color:#38bdf8;
+
+        }
+
+        .job-cards{
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            margin-top:20px;
+
+        }
+
+        .job-card{
+
+            background:#1e293b;
+            padding:20px;
+            border-radius:20px;
+            text-align:center;
+            transition:0.3s;
+
+        }
+
+        .job-card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+        .job-card h3{
+
+            color:#38bdf8;
+
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-    <nav class="navbar">
+<div class="navbar">
 
-        <h2>📚 Manjora AI</h2>
+    <h2>🚀 Manjora AI Planner</h2>
 
-        <div>
+    <div>
 
-            <a href="/">Home</a>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
 
-            <a href="/dashboard">Dashboard</a>
+    </div>
 
-            <a href="/chatbot">AI Mentor</a>
+</div>
+
+<div class="container">
+
+    <h1>📅 Daily Time Table Planner</h1>
+
+    <div class="planner-box">
+
+        <input type="text" id="time" placeholder="Enter Time">
+
+        <input type="text" id="task" placeholder="Enter Task">
+
+        <button onclick="addTask()">Add Task</button>
+
+        <div id="task-list"></div>
+
+    </div>
+
+    <h2 class="section-title">🎯 Job Preparation Plans</h2>
+
+    <div class="job-cards">
+
+        <div class="job-card">
+
+            <h3>💻 Software Jobs</h3>
+
+            <p>DSA, Projects, Aptitude, Interview Prep</p>
 
         </div>
 
-    </nav>
+        <div class="job-card">
 
-    <div class="container">
+            <h3>📚 UPSC</h3>
 
-        <h1>
+            <p>NCERT, Current Affairs, Optional Strategy</p>
 
-            Smart Study Planner
+        </div>
 
-        </h1>
+        <div class="job-card">
 
-        <p>
+            <h3>🏦 Banking</h3>
 
-            Plan your daily study goals effectively.
+            <p>Reasoning, Quantitative Aptitude, GK</p>
 
-        </p>
+        </div>
 
-        <input
-            type="text"
-            id="taskInput"
-            placeholder="Enter study task...">
+        <div class="job-card">
 
-        <button onclick="addTask()">
+            <h3>⚡ GATE</h3>
 
-            Add Task
-
-        </button>
-
-        <div id="taskList">
+            <p>Core Subjects, PYQs, Mock Tests</p>
 
         </div>
 
     </div>
 
-    <script>
+</div>
 
-        function addTask(){
+<script>
 
-            let input =
-                document.getElementById("taskInput");
+function addTask(){
 
-            let task = input.value;
+    let time = document.getElementById("time").value;
 
-            if(task.trim() === "") return;
+    let task = document.getElementById("task").value;
 
-            let taskList =
-                document.getElementById("taskList");
+    if(time === "" || task === ""){
 
-            taskList.innerHTML +=
-                `<div class="planner-task">
-                    ✅ ${task}
-                </div>`;
+        alert("Please enter all fields");
 
-            input.value = "";
-        }
+        return;
 
-    </script>
+    }
+
+    let taskList = document.getElementById("task-list");
+
+    let div = document.createElement("div");
+
+    div.className = "task";
+
+    div.innerHTML = `
+
+        <div>
+            <b>${time}</b> - ${task}
+        </div>
+
+        <button class="delete-btn" onclick="this.parentElement.remove()">
+            Delete
+        </button>
+
+    `;
+
+    taskList.appendChild(div);
+
+    document.getElementById("time").value = "";
+
+    document.getElementById("task").value = "";
+
+}
+
+</script>
 
 </body>
 
