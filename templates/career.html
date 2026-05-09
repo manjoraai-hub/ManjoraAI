@@ -1,95 +1,308 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
     <title>Career Roadmaps | Manjora AI</title>
 
     <style>
 
-        body{
+        *{
             margin:0;
             padding:0;
-            font-family:Arial;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
             background:#0f172a;
             color:white;
         }
 
         .navbar{
+
             background:#1e293b;
-            padding:15px 30px;
+
+            padding:20px 40px;
+
             display:flex;
+
             justify-content:space-between;
+
             align-items:center;
+
         }
 
         .navbar h2{
-            margin:0;
+
             color:#38bdf8;
+
         }
 
         .navbar a{
+
             color:white;
+
             text-decoration:none;
+
             margin-left:20px;
+
+            font-size:18px;
+
         }
 
         .container{
+
             width:90%;
-            max-width:1200px;
+
+            max-width:1400px;
+
             margin:auto;
-            padding:30px;
+
+            padding:40px 20px;
+
         }
 
         h1{
+
             text-align:center;
-            margin-bottom:40px;
-        }
 
-        .roadmap-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:25px;
-        }
+            font-size:55px;
 
-        .roadmap-card{
-            background:#1e293b;
-            padding:25px;
-            border-radius:20px;
-            transition:0.3s;
-            box-shadow:0px 0px 15px rgba(0,0,0,0.3);
-        }
-
-        .roadmap-card:hover{
-            transform:translateY(-10px);
-        }
-
-        .roadmap-card h2{
             color:#38bdf8;
+
+            margin-bottom:20px;
+
         }
 
-        ul{
-            padding-left:20px;
+        .subtitle{
+
+            text-align:center;
+
+            color:#cbd5e1;
+
+            font-size:20px;
+
+            margin-bottom:50px;
+
         }
 
-        li{
-            margin-top:10px;
+        .search-box{
+
+            text-align:center;
+
+            margin-bottom:40px;
+
+        }
+
+        .search-box input{
+
+            width:60%;
+
+            max-width:500px;
+
+            padding:15px;
+
+            border:none;
+
+            border-radius:12px;
+
+            font-size:16px;
+
+        }
+
+        .filter-buttons{
+
+            text-align:center;
+
+            margin-bottom:50px;
+
         }
 
         .btn{
+
             display:inline-block;
-            margin-top:20px;
-            padding:10px 20px;
+
+            margin:10px;
+
+            padding:12px 24px;
+
             background:#2563eb;
+
             color:white;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
+
             text-decoration:none;
+
+            border:none;
+
+            border-radius:12px;
+
+            cursor:pointer;
+
+            transition:0.3s;
+
+            font-size:16px;
+
         }
 
         .btn:hover{
+
             background:#1d4ed8;
+
+            transform:scale(1.05);
+
+        }
+
+        .roadmap-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(330px,1fr));
+
+            gap:30px;
+
+        }
+
+        .roadmap-card{
+
+            background:#1e293b;
+
+            padding:30px;
+
+            border-radius:22px;
+
+            box-shadow:
+            0px 0px 20px rgba(0,0,0,0.3);
+
+            transition:0.3s;
+
+        }
+
+        .roadmap-card:hover{
+
+            transform:translateY(-10px);
+
+        }
+
+        .roadmap-card h2{
+
+            color:#38bdf8;
+
+            margin-bottom:20px;
+
+        }
+
+        .roadmap-card h3{
+
+            margin-top:20px;
+
+            margin-bottom:10px;
+
+            color:#facc15;
+
+        }
+
+        .roadmap-card p{
+
+            color:#e2e8f0;
+
+            line-height:1.6;
+
+        }
+
+        ul{
+
+            padding-left:20px;
+
+            margin-top:10px;
+
+        }
+
+        li{
+
+            margin-top:10px;
+
+            color:#cbd5e1;
+
+        }
+
+        .progress-bar{
+
+            background:#334155;
+
+            height:24px;
+
+            border-radius:12px;
+
+            overflow:hidden;
+
+            margin-top:15px;
+
+        }
+
+        .progress{
+
+            height:100%;
+
+            background:#22c55e;
+
+            text-align:center;
+
+            line-height:24px;
+
+            font-weight:bold;
+
+        }
+
+        #popup{
+
+            display:none;
+
+            position:fixed;
+
+            top:50%;
+
+            left:50%;
+
+            transform:translate(-50%,-50%);
+
+            background:#1e293b;
+
+            width:90%;
+
+            max-width:550px;
+
+            padding:35px;
+
+            border-radius:20px;
+
+            z-index:1000;
+
+            box-shadow:
+            0px 0px 30px rgba(0,0,0,0.5);
+
+        }
+
+        #popup h2{
+
+            color:#38bdf8;
+
+            margin-bottom:20px;
+
+        }
+
+        #popup p{
+
+            color:#e2e8f0;
+
+            line-height:1.7;
+
         }
 
     </style>
@@ -103,9 +316,11 @@
     <h2>🚀 Manjora AI</h2>
 
     <div>
+
         <a href="/">Home</a>
         <a href="/dashboard">Dashboard</a>
-        <a href="/planner">Planner</a>
+        <a href="/books">Books</a>
+
     </div>
 
 </div>
@@ -114,59 +329,109 @@
 
     <h1>🎯 Career Roadmaps</h1>
 
-    <div style="text-align:center;margin-bottom:30px;">
+    <p class="subtitle">
 
-        <button class="btn" onclick="filterCards('all')">All</button>
+        Explore modern careers, required skills,
+        salaries and learning paths.
 
-        <button class="btn" onclick="filterCards('tech')">Tech</button>
+    </p>
 
-        <button class="btn" onclick="filterCards('government')">Government</button>
-
-        <button class="btn" onclick="filterCards('ai')">AI</button>
-
-    </div>
-
-    <div style="text-align:center;margin-bottom:30px;">
+    <div class="search-box">
 
         <input type="text"
         id="searchInput"
         placeholder="Search careers..."
-        onkeyup="searchRoadmaps()"
+        onkeyup="searchRoadmaps()">
 
-        style="width:60%;
-        max-width:500px;
-        padding:15px;
-        border:none;
-        border-radius:12px;
-        font-size:16px;">
+    </div>
+
+    <div class="filter-buttons">
+
+        <button class="btn"
+        onclick="filterCards('all')">
+
+            All
+
+        </button>
+
+        <button class="btn"
+        onclick="filterCards('tech')">
+
+            Tech
+
+        </button>
+
+        <button class="btn"
+        onclick="filterCards('ai')">
+
+            AI
+
+        </button>
+
+        <button class="btn"
+        onclick="filterCards('government')">
+
+            Government
+
+        </button>
 
     </div>
 
     <div class="roadmap-grid">
 
+        <!-- Software Engineer -->
+
         <div class="roadmap-card roadmap-item tech">
 
             <h2>💻 Software Engineer</h2>
 
+            <p>
+
+                Build modern applications,
+                websites and scalable systems.
+
+            </p>
+
+            <h3>📈 Learning Path</h3>
+
             <ul>
-                <li>Learn C / C++ / Python</li>
+
+                <li>Learn C / Python Basics</li>
                 <li>Data Structures & Algorithms</li>
+                <li>Web Development</li>
                 <li>Build Projects</li>
                 <li>Git & GitHub</li>
                 <li>Interview Preparation</li>
+
             </ul>
 
-            <h3>Skill Progress</h3>
+            <h3>💰 Salary</h3>
 
-            <div style="background:#334155;height:20px;border-radius:10px;overflow:hidden;">
+            <p>₹6 – ₹30 LPA</p>
 
-                <div style="width:75%;height:100%;background:#22c55e;text-align:center;line-height:20px;">
+            <h3>⏳ Duration</h3>
 
-                    75%
+            <p>6 – 12 Months</p>
+
+            <h3>🚀 Skill Progress</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress"
+                style="width:80%;">
+
+                    80%
 
                 </div>
 
             </div>
+
+            <a href="/books"
+            class="btn">
+
+                Resources
+
+            </a>
 
             <button class="btn"
             onclick="showDetails('software')">
@@ -177,45 +442,168 @@
 
         </div>
 
+        <!-- AI Engineer -->
+
         <div class="roadmap-card roadmap-item ai">
 
             <h2>🤖 AI / ML Engineer</h2>
 
+            <p>
+
+                Learn Artificial Intelligence,
+                Deep Learning and Machine Learning.
+
+            </p>
+
+            <h3>📈 Learning Path</h3>
+
             <ul>
+
                 <li>Python Programming</li>
                 <li>Machine Learning</li>
                 <li>Deep Learning</li>
                 <li>TensorFlow & PyTorch</li>
                 <li>AI Projects</li>
+
             </ul>
 
+            <h3>💰 Salary</h3>
+
+            <p>₹8 – ₹40 LPA</p>
+
+            <h3>⏳ Duration</h3>
+
+            <p>8 – 15 Months</p>
+
+            <h3>🚀 Skill Progress</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress"
+                style="width:70%;">
+
+                    70%
+
+                </div>
+
+            </div>
+
+            <a href="/books"
+            class="btn">
+
+                Resources
+
+            </a>
+
         </div>
+
+        <!-- UPSC -->
 
         <div class="roadmap-card roadmap-item government">
 
             <h2>📚 UPSC Aspirant</h2>
 
+            <p>
+
+                Prepare for Civil Services Examination
+                with structured guidance.
+
+            </p>
+
+            <h3>📈 Learning Path</h3>
+
             <ul>
+
                 <li>NCERT Preparation</li>
                 <li>Current Affairs</li>
-                <li>Optional Subject</li>
                 <li>Answer Writing</li>
                 <li>Mock Tests</li>
+                <li>Optional Subject</li>
+
             </ul>
 
+            <h3>💰 Career Benefits</h3>
+
+            <p>IAS / IPS / IFS Officer Opportunities</p>
+
+            <h3>⏳ Duration</h3>
+
+            <p>1 – 3 Years</p>
+
+            <h3>🚀 Preparation Progress</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress"
+                style="width:60%;">
+
+                    60%
+
+                </div>
+
+            </div>
+
+            <a href="/books"
+            class="btn">
+
+                Resources
+
+            </a>
+
         </div>
+
+        <!-- Cybersecurity -->
 
         <div class="roadmap-card roadmap-item tech">
 
             <h2>🛡 Cybersecurity</h2>
 
+            <p>
+
+                Learn ethical hacking,
+                networking and security testing.
+
+            </p>
+
+            <h3>📈 Learning Path</h3>
+
             <ul>
+
                 <li>Networking Basics</li>
                 <li>Linux Fundamentals</li>
                 <li>Ethical Hacking</li>
                 <li>Penetration Testing</li>
                 <li>Security Certifications</li>
+
             </ul>
+
+            <h3>💰 Salary</h3>
+
+            <p>₹7 – ₹25 LPA</p>
+
+            <h3>⏳ Duration</h3>
+
+            <p>6 – 10 Months</p>
+
+            <h3>🚀 Skill Progress</h3>
+
+            <div class="progress-bar">
+
+                <div class="progress"
+                style="width:75%;">
+
+                    75%
+
+                </div>
+
+            </div>
+
+            <a href="/books"
+            class="btn">
+
+                Resources
+
+            </a>
 
         </div>
 
@@ -223,20 +611,7 @@
 
 </div>
 
-<div id="popup"
-style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#1e293b;
-padding:30px;
-border-radius:20px;
-width:80%;
-max-width:500px;
-z-index:1000;
-box-shadow:0px 0px 20px rgba(0,0,0,0.5);">
+<div id="popup">
 
     <h2 id="popup-title"></h2>
 
@@ -256,14 +631,16 @@ box-shadow:0px 0px 20px rgba(0,0,0,0.5);">
 function searchRoadmaps(){
 
     let input =
-    document.getElementById("searchInput").value.toLowerCase();
+    document.getElementById("searchInput")
+    .value.toLowerCase();
 
     let cards =
     document.getElementsByClassName("roadmap-item");
 
     for(let i = 0; i < cards.length; i++){
 
-        let text = cards[i].innerText.toLowerCase();
+        let text =
+        cards[i].innerText.toLowerCase();
 
         if(text.includes(input)){
 
@@ -320,20 +697,23 @@ function showDetails(career){
 
     if(career === "software"){
 
-        title.innerText = "💻 Software Engineer";
+        title.innerText =
+        "💻 Software Engineer";
 
         content.innerText =
-        "Learn programming, DSA, projects, GitHub, system design and interview preparation. Average salary ranges from ₹6–25 LPA depending on skills.";
+        "Software Engineers build applications, websites and scalable systems. Learn programming, DSA, projects, GitHub and interview preparation.";
 
     }
 
-    document.getElementById("popup").style.display = "block";
+    document.getElementById("popup")
+    .style.display = "block";
 
 }
 
 function closePopup(){
 
-    document.getElementById("popup").style.display = "none";
+    document.getElementById("popup")
+    .style.display = "none";
 
 }
 
