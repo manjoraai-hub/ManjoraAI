@@ -207,7 +207,7 @@ def books():
 @login_required
 def affairs():
 
-    api_key = "6e564400a1884b29933d7db73feaa739"
+    api_key = "df0d2e457969b94603f4182e33e9a928"
 
     url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={api_key}"
 
