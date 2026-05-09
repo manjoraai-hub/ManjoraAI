@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
     <title>Manjora AI | Login</title>
 
@@ -11,7 +16,7 @@
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial;
+            font-family:Arial, sans-serif;
         }
 
         body{
@@ -24,50 +29,30 @@
 
             background:
             linear-gradient(rgba(15,23,42,0.85),
-            rgba(15,23,42,0.9)),
+            rgba(15,23,42,0.92)),
 
-            url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600');
+            url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400');
 
             background-size:cover;
             background-position:center;
 
-            overflow:hidden;
-
         }
 
-        .login-container{
+        .login-box{
 
             width:90%;
-            max-width:480px;
+            max-width:450px;
 
-            background:rgba(30,41,59,0.92);
+            background:rgba(30,41,59,0.95);
 
-            backdrop-filter:blur(12px);
+            padding:40px;
 
-            padding:45px;
-
-            border-radius:25px;
+            border-radius:20px;
 
             box-shadow:
-            0px 0px 40px rgba(0,0,0,0.5);
+            0px 0px 30px rgba(0,0,0,0.4);
 
             text-align:center;
-
-            animation:fadeIn 1s ease;
-
-        }
-
-        @keyframes fadeIn{
-
-            from{
-                opacity:0;
-                transform:translateY(40px);
-            }
-
-            to{
-                opacity:1;
-                transform:translateY(0px);
-            }
 
         }
 
@@ -81,63 +66,62 @@
         h1{
 
             color:#38bdf8;
-            font-size:48px;
             margin-bottom:10px;
+            font-size:42px;
 
         }
 
         .subtitle{
 
             color:#cbd5e1;
-            margin-bottom:35px;
-            font-size:20px;
+            margin-bottom:30px;
+            font-size:18px;
 
         }
 
-        .input-box{
+        .input-group{
 
-            width:100%;
             margin-top:20px;
 
         }
 
-        .input-box input{
+        .input-group input{
 
             width:100%;
 
-            padding:18px;
+            padding:16px;
 
             border:none;
 
-            outline:none;
-
-            border-radius:14px;
+            border-radius:12px;
 
             background:#0f172a;
 
             color:white;
 
-            font-size:17px;
+            font-size:16px;
+
+            outline:none;
 
         }
 
-        .btn{
+        .login-btn{
 
             width:100%;
 
-            padding:18px;
+            margin-top:25px;
 
-            margin-top:30px;
+            padding:16px;
 
             border:none;
 
-            border-radius:14px;
+            border-radius:12px;
 
             background:#2563eb;
 
             color:white;
 
-            font-size:20px;
+            font-size:18px;
 
             cursor:pointer;
 
@@ -145,22 +129,20 @@
 
         }
 
-        .btn:hover{
+        .login-btn:hover{
 
             background:#1d4ed8;
-            transform:scale(1.03);
 
         }
 
-        .extra{
+        .register{
 
-            margin-top:25px;
+            margin-top:20px;
             color:#cbd5e1;
-            font-size:17px;
 
         }
 
-        .extra a{
+        .register a{
 
             color:#38bdf8;
             text-decoration:none;
@@ -169,27 +151,29 @@
 
         .features{
 
-            margin-top:35px;
+            margin-top:30px;
+
             text-align:left;
 
             background:#0f172a;
+
             padding:20px;
+
             border-radius:15px;
 
         }
 
         .features h3{
 
-            margin-bottom:15px;
             color:#38bdf8;
+            margin-bottom:15px;
 
         }
 
         .features p{
 
-            margin-top:12px;
+            margin-top:10px;
             color:#e2e8f0;
-            font-size:17px;
 
         }
 
@@ -199,79 +183,70 @@
 
 <body>
 
-<div class="login-container">
+    <div class="login-box">
 
-    <div class="logo">
+        <div class="logo">🚀</div>
 
-        🚀
+        <h1>Manjora AI</h1>
 
-    </div>
+        <p class="subtitle">
 
-    <h1>Manjora AI</h1>
+            Smart Learning & Productivity Platform
 
-    <p class="subtitle">
+        </p>
 
-        Smart Learning & Productivity Platform
+        <form action="/dashboard">
 
-    </p>
+            <div class="input-group">
 
-    <form action="/dashboard">
+                <input type="text"
+                placeholder="Enter Username"
+                required>
 
-        <div class="input-box">
+            </div>
 
-            <input type="text"
-            placeholder="Enter Username"
-            required>
+            <div class="input-group">
+
+                <input type="password"
+                placeholder="Enter Password"
+                required>
+
+            </div>
+
+            <button class="login-btn">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <div class="register">
+
+            Don't have an account?
+
+            <a href="/register">
+
+                Register
+
+            </a>
 
         </div>
 
-        <div class="input-box">
+        <div class="features">
 
-            <input type="password"
-            placeholder="Enter Password"
-            required>
+            <h3>✨ Features</h3>
+
+            <p>✅ Study Planner</p>
+            <p>✅ UPSC Learning Hub</p>
+            <p>✅ Career Roadmaps</p>
+            <p>✅ Books & Lectures</p>
+            <p>✅ Productivity Dashboard</p>
 
         </div>
 
-        <button class="btn">
-
-            Login
-
-        </button>
-
-    </form>
-
-    <div class="extra">
-
-        Don't have an account?
-
-        <a href="/register">
-
-            Register
-
-        </a>
-
     </div>
-
-    <div class="features">
-
-        <h3>✨ Platform Features</h3>
-
-        <p>✅ Daily Study Planner</p>
-
-        <p>✅ UPSC Learning Hub</p>
-
-        <p>✅ Career Roadmaps</p>
-
-        <p>✅ Books & YouTube Lectures</p>
-
-        <p>✅ Productivity Dashboard</p>
-
-        <p>✅ Smart Educational Resources</p>
-
-    </div>
-
-</div>
 
 </body>
+
 </html>
