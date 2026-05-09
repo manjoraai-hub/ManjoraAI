@@ -1,57 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Register</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register - Manjora AI</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-<div class="container">
+    <div class="auth-container">
 
-<h1>📝 Register</h1>
+        <div class="auth-card">
 
-<form action="/register_user" method="POST">
+            <h1>🚀 Register</h1>
 
-<input
-type="text"
-name="username"
-placeholder="Create Username"
-required>
+            <p>Create your Manjora AI account</p>
 
-<input
-type="password"
-name="password"
-placeholder="Create Password"
-required>
+            <form action="/register_user" method="POST">
 
-<button type="submit">
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter Username"
+                    required>
 
-    Register
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter Password"
+                    required>
 
-</button>
+                <button type="submit">
 
-</form>
+                    Register
 
-<p style="margin-top:20px;">
+                </button>
 
-Already have an account?
+            </form>
 
-<a href="/login"
-style="color:white; font-weight:bold;">
+            <p class="auth-link">
 
-Login
+                Already have an account?
 
-</a>
+                <a href="/login">
 
-</p>
+                    Login
 
-</div>
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

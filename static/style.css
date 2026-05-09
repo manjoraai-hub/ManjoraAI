@@ -485,3 +485,76 @@ button:hover{
         width:100%;
     }
 }
+/* =========================
+   AUTH PAGES
+========================= */
+
+.auth-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:20px;
+}
+
+.auth-card{
+
+    width:400px;
+
+    background:rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(12px);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+
+    animation:fadeIn 1s ease;
+}
+
+.auth-card h1{
+
+    margin-bottom:15px;
+
+    font-size:40px;
+}
+
+.auth-card p{
+
+    margin-bottom:25px;
+
+    font-size:18px;
+}
+
+.auth-card input{
+
+    margin-top:15px;
+}
+
+.auth-card button{
+
+    width:100%;
+}
+
+.auth-link{
+
+    margin-top:20px;
+}
+
+.auth-link a{
+
+    color:#ff4b2b;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
