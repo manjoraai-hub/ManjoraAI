@@ -16,104 +16,80 @@
         }
 
         .navbar{
-
             background:#1e293b;
             padding:15px 30px;
             display:flex;
             justify-content:space-between;
             align-items:center;
-
         }
 
         .navbar h2{
-
             margin:0;
             color:#38bdf8;
-
         }
 
         .navbar a{
-
             color:white;
             text-decoration:none;
             margin-left:20px;
-
         }
 
         .container{
-
             width:90%;
             max-width:1200px;
             margin:auto;
             padding:30px;
-
         }
 
         h1{
-
             text-align:center;
             margin-bottom:40px;
-
         }
 
         .roadmap-grid{
-
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
             gap:25px;
-
         }
 
         .roadmap-card{
-
             background:#1e293b;
             padding:25px;
             border-radius:20px;
             transition:0.3s;
             box-shadow:0px 0px 15px rgba(0,0,0,0.3);
-
         }
 
         .roadmap-card:hover{
-
             transform:translateY(-10px);
-
         }
 
         .roadmap-card h2{
-
             color:#38bdf8;
-
         }
 
         ul{
-
             padding-left:20px;
-
         }
 
         li{
-
             margin-top:10px;
-
         }
 
         .btn{
-
             display:inline-block;
             margin-top:20px;
             padding:10px 20px;
             background:#2563eb;
             color:white;
-            text-decoration:none;
+            border:none;
             border-radius:10px;
-
+            cursor:pointer;
+            text-decoration:none;
         }
 
         .btn:hover{
-
             background:#1d4ed8;
-
         }
 
     </style>
@@ -127,11 +103,9 @@
     <h2>🚀 Manjora AI</h2>
 
     <div>
-
         <a href="/">Home</a>
         <a href="/dashboard">Dashboard</a>
         <a href="/planner">Planner</a>
-
     </div>
 
 </div>
@@ -140,113 +114,108 @@
 
     <h1>🎯 Career Roadmaps</h1>
 
+    <div style="text-align:center;margin-bottom:30px;">
+
+        <button class="btn" onclick="filterCards('all')">All</button>
+
+        <button class="btn" onclick="filterCards('tech')">Tech</button>
+
+        <button class="btn" onclick="filterCards('government')">Government</button>
+
+        <button class="btn" onclick="filterCards('ai')">AI</button>
+
+    </div>
+
+    <div style="text-align:center;margin-bottom:30px;">
+
+        <input type="text"
+        id="searchInput"
+        placeholder="Search careers..."
+        onkeyup="searchRoadmaps()"
+
+        style="width:60%;
+        max-width:500px;
+        padding:15px;
+        border:none;
+        border-radius:12px;
+        font-size:16px;">
+
+    </div>
+
     <div class="roadmap-grid">
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-item tech">
 
             <h2>💻 Software Engineer</h2>
 
             <ul>
-
                 <li>Learn C / C++ / Python</li>
                 <li>Data Structures & Algorithms</li>
                 <li>Build Projects</li>
                 <li>Git & GitHub</li>
                 <li>Interview Preparation</li>
-
             </ul>
 
-            <a href="#" class="btn">Start Learning</a>
+            <h3>Skill Progress</h3>
+
+            <div style="background:#334155;height:20px;border-radius:10px;overflow:hidden;">
+
+                <div style="width:75%;height:100%;background:#22c55e;text-align:center;line-height:20px;">
+
+                    75%
+
+                </div>
+
+            </div>
+
+            <button class="btn"
+            onclick="showDetails('software')">
+
+                Learn More
+
+            </button>
 
         </div>
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-item ai">
 
             <h2>🤖 AI / ML Engineer</h2>
 
             <ul>
-
                 <li>Python Programming</li>
                 <li>Machine Learning</li>
                 <li>Deep Learning</li>
                 <li>TensorFlow & PyTorch</li>
                 <li>AI Projects</li>
-
             </ul>
-
-            <a href="#" class="btn">Start Learning</a>
 
         </div>
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-item government">
 
             <h2>📚 UPSC Aspirant</h2>
 
             <ul>
-
                 <li>NCERT Preparation</li>
                 <li>Current Affairs</li>
                 <li>Optional Subject</li>
                 <li>Answer Writing</li>
                 <li>Mock Tests</li>
-
             </ul>
-
-            <a href="#" class="btn">Start Learning</a>
 
         </div>
 
-        <div class="roadmap-card">
+        <div class="roadmap-card roadmap-item tech">
 
             <h2>🛡 Cybersecurity</h2>
 
             <ul>
-
                 <li>Networking Basics</li>
                 <li>Linux Fundamentals</li>
                 <li>Ethical Hacking</li>
                 <li>Penetration Testing</li>
                 <li>Security Certifications</li>
-
             </ul>
-
-            <a href="#" class="btn">Start Learning</a>
-
-        </div>
-
-        <div class="roadmap-card">
-
-            <h2>🌐 Full Stack Developer</h2>
-
-            <ul>
-
-                <li>HTML, CSS, JavaScript</li>
-                <li>React.js</li>
-                <li>Flask / Node.js</li>
-                <li>Databases</li>
-                <li>Deployment</li>
-
-            </ul>
-
-            <a href="#" class="btn">Start Learning</a>
-
-        </div>
-
-        <div class="roadmap-card">
-
-            <h2>📊 Data Scientist</h2>
-
-            <ul>
-
-                <li>Python & Statistics</li>
-                <li>Pandas & NumPy</li>
-                <li>Data Visualization</li>
-                <li>Machine Learning</li>
-                <li>Real-world Projects</li>
-
-            </ul>
-
-            <a href="#" class="btn">Start Learning</a>
 
         </div>
 
@@ -254,6 +223,121 @@
 
 </div>
 
-</body>
+<div id="popup"
+style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+width:80%;
+max-width:500px;
+z-index:1000;
+box-shadow:0px 0px 20px rgba(0,0,0,0.5);">
 
+    <h2 id="popup-title"></h2>
+
+    <p id="popup-content"></p>
+
+    <button class="btn"
+    onclick="closePopup()">
+
+        Close
+
+    </button>
+
+</div>
+
+<script>
+
+function searchRoadmaps(){
+
+    let input =
+    document.getElementById("searchInput").value.toLowerCase();
+
+    let cards =
+    document.getElementsByClassName("roadmap-item");
+
+    for(let i = 0; i < cards.length; i++){
+
+        let text = cards[i].innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            cards[i].style.display = "block";
+
+        }
+
+        else{
+
+            cards[i].style.display = "none";
+
+        }
+
+    }
+
+}
+
+function filterCards(category){
+
+    let cards =
+    document.getElementsByClassName("roadmap-item");
+
+    for(let i = 0; i < cards.length; i++){
+
+        if(category === "all"){
+
+            cards[i].style.display = "block";
+
+        }
+
+        else if(cards[i].classList.contains(category)){
+
+            cards[i].style.display = "block";
+
+        }
+
+        else{
+
+            cards[i].style.display = "none";
+
+        }
+
+    }
+
+}
+
+function showDetails(career){
+
+    let title =
+    document.getElementById("popup-title");
+
+    let content =
+    document.getElementById("popup-content");
+
+    if(career === "software"){
+
+        title.innerText = "💻 Software Engineer";
+
+        content.innerText =
+        "Learn programming, DSA, projects, GitHub, system design and interview preparation. Average salary ranges from ₹6–25 LPA depending on skills.";
+
+    }
+
+    document.getElementById("popup").style.display = "block";
+
+}
+
+function closePopup(){
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+</script>
+
+</body>
 </html>
