@@ -1,24 +1,40 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
 # =========================
-# DASHBOARD
+# HOME PAGE
 # =========================
-# =========================
-# LOGIN
-# =========================
-
-@app.route('/login')
-def login():
-
-    return render_template('login.html')
 
 @app.route('/')
 def index():
 
     return render_template('index.html')
 
+
+# =========================
+# LOGIN
+# =========================
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        # Simple demo login
+        if username and password:
+
+            return redirect(url_for('dashboard'))
+
+    return render_template('login.html')
+
+
+# =========================
+# DASHBOARD
+# =========================
 
 @app.route('/dashboard')
 def dashboard():
@@ -27,7 +43,7 @@ def dashboard():
 
 
 # =========================
-# PLANNER
+# STUDY PLANNER
 # =========================
 
 @app.route('/planner')
@@ -37,7 +53,7 @@ def planner():
 
 
 # =========================
-# CAREER
+# CAREER ROADMAP
 # =========================
 
 @app.route('/career')
@@ -47,7 +63,7 @@ def career():
 
 
 # =========================
-# BOOKS
+# BOOKS & LECTURES
 # =========================
 
 @app.route('/books')
