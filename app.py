@@ -5,8 +5,21 @@ app = Flask(__name__)
 # =========================
 # DASHBOARD
 # =========================
+# =========================
+# LOGIN
+# =========================
+
+@app.route('/login')
+def login():
+
+    return render_template('login.html')
 
 @app.route('/')
+def index():
+
+    return render_template('index.html')
+
+
 @app.route('/dashboard')
 def dashboard():
 
