@@ -1,37 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>AI Mentor Chatbot</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AI Mentor - Manjora AI</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
-<div class="container">
+    <nav class="navbar">
 
-<h1>🤖 AI Mentor</h1>
+        <h2>🤖 Manjora AI</h2>
 
-<div id="chatBox"></div>
+        <div>
 
-<input
-type="text"
-id="userMessage"
-placeholder="Ask your study or career question">
+            <a href="/">Home</a>
 
-<button onclick="sendMessage()">
+            <a href="/dashboard">Dashboard</a>
 
-    Send
+            <a href="/planner">Planner</a>
 
-</button>
+        </div>
 
-</div>
+    </nav>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <div class="container">
+
+        <h1>
+
+            AI Mentor Chatbot
+
+        </h1>
+
+        <p>
+
+            Ask doubts, get guidance and learn smarter.
+
+        </p>
+
+        <div id="chatBox">
+
+            <div class="bot-chat">
+
+                👋 Hello! I am your AI Mentor.
+
+            </div>
+
+        </div>
+
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Ask something...">
+
+        <button onclick="sendMessage()">
+
+            Send
+
+        </button>
+
+    </div>
+
+    <script>
+
+        function sendMessage(){
+
+            let input =
+                document.getElementById("userInput");
+
+            let message = input.value;
+
+            if(message.trim() === "") return;
+
+            let chatBox =
+                document.getElementById("chatBox");
+
+            chatBox.innerHTML +=
+                `<div class="user-chat">
+                    ${message}
+                </div>`;
+
+            setTimeout(() => {
+
+                chatBox.innerHTML +=
+                    `<div class="bot-chat">
+                        AI Mentor is thinking...
+                    </div>`;
+
+                chatBox.scrollTop =
+                    chatBox.scrollHeight;
+
+            }, 500);
+
+            input.value = "";
+
+            chatBox.scrollTop =
+                chatBox.scrollHeight;
+        }
+
+    </script>
 
 </body>
+
 </html>

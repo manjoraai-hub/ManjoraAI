@@ -558,3 +558,67 @@ button:hover{
 
     font-weight:bold;
 }
+/* =========================
+   CHATBOT
+========================= */
+
+#chatBox{
+
+    height:450px;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    margin-top:30px;
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
+
+}
+
+.user-chat{
+
+    background:#ff4b2b;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+    text-align:right;
+
+    width:fit-content;
+
+    margin-left:auto;
+
+    max-width:75%;
+
+    animation:fadeIn 0.5s ease;
+}
+
+.bot-chat{
+
+    background:#2193b0;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+    width:fit-content;
+
+    max-width:75%;
+
+    animation:fadeIn 0.5s ease;
+}
+
+#userInput{
+
+    margin-top:20px;
+}
