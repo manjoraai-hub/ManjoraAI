@@ -1,47 +1,3 @@
-<h1>
-
-    Welcome, {{ username }} 🚀
-
-</h1>
-
-<div style="margin-top:30px;">
-
-    <a href="/update_progress/20"
-    class="btn">
-
-        20%
-
-    </a>
-
-    <a href="/update_progress/40"
-    class="btn">
-
-        40%
-
-    </a>
-
-    <a href="/update_progress/60"
-    class="btn">
-
-        60%
-
-    </a>
-
-    <a href="/update_progress/80"
-    class="btn">
-
-        80%
-
-    </a>
-
-    <a href="/update_progress/100"
-    class="btn">
-
-        100%
-
-    </a>
-
-</div>
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +18,7 @@
         .navbar{
 
             background:#1e293b;
-            padding:15px;
+            padding:15px 30px;
             display:flex;
             justify-content:space-between;
             align-items:center;
@@ -100,23 +56,60 @@
 
         .hero h1{
 
-            font-size:45px;
+            font-size:50px;
             margin-bottom:10px;
+            color:#38bdf8;
 
         }
 
         .hero p{
 
-            font-size:18px;
+            font-size:20px;
             color:#cbd5e1;
+
+        }
+
+        .progress-section{
+
+            text-align:center;
+            margin-top:20px;
+
+        }
+
+        .progress-section h2{
+
+            margin-bottom:20px;
+
+        }
+
+        .btn{
+
+            display:inline-block;
+            margin:10px;
+            padding:12px 22px;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            transition:0.3s;
+
+        }
+
+        .btn:hover{
+
+            background:#1d4ed8;
+            transform:scale(1.05);
 
         }
 
         .cards{
 
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            grid-template-columns:
+            repeat(auto-fit,minmax(250px,1fr));
+
             gap:20px;
+
             padding:30px;
 
         }
@@ -127,7 +120,8 @@
             padding:25px;
             border-radius:20px;
             transition:0.3s;
-            box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+            box-shadow:
+            0px 0px 15px rgba(0,0,0,0.3);
 
         }
 
@@ -144,21 +138,35 @@
 
         }
 
-        .btn{
+        .daily-news{
 
-            display:inline-block;
-            margin-top:15px;
-            padding:10px 20px;
-            background:#2563eb;
-            color:white;
-            text-decoration:none;
-            border-radius:10px;
+            margin:40px 30px;
+
+            background:#1e293b;
+
+            padding:30px;
+
+            border-radius:20px;
+
+            text-align:center;
+
+            box-shadow:
+            0px 0px 15px rgba(0,0,0,0.3);
 
         }
 
-        .btn:hover{
+        .daily-news h2{
 
-            background:#1d4ed8;
+            color:#38bdf8;
+            margin-bottom:20px;
+
+        }
+
+        .daily-news p{
+
+            font-size:18px;
+            line-height:1.7;
+            color:#cbd5e1;
 
         }
 
@@ -168,6 +176,8 @@
 
 <body>
 
+<!-- NAVBAR -->
+
 <div class="navbar">
 
     <h2>🚀 Manjora AI</h2>
@@ -175,22 +185,88 @@
     <div class="menu">
 
         <a href="/">Home</a>
+
         <a href="/planner">Planner</a>
+
         <a href="/career">Career</a>
+
         <a href="/books">Books</a>
+
         <a href="/affairs">Affairs</a>
+
+        <a href="/logout">Logout</a>
 
     </div>
 
 </div>
 
+<!-- HERO -->
+
 <div class="hero">
 
-    <h1>Welcome to Manjora AI</h1>
+    <h1>
 
-    <p>Your Smart Learning & Productivity Platform</p>
+        Welcome, {{ username }} 🚀
+
+    </h1>
+
+    <p>
+
+        Your Smart Learning &
+        Productivity Platform
+
+    </p>
 
 </div>
+
+<!-- PROGRESS -->
+
+<div class="progress-section">
+
+    <h2>
+
+        Your Progress: {{ progress }}%
+
+    </h2>
+
+    <a href="/update_progress/20"
+    class="btn">
+
+        20%
+
+    </a>
+
+    <a href="/update_progress/40"
+    class="btn">
+
+        40%
+
+    </a>
+
+    <a href="/update_progress/60"
+    class="btn">
+
+        60%
+
+    </a>
+
+    <a href="/update_progress/80"
+    class="btn">
+
+        80%
+
+    </a>
+
+    <a href="/update_progress/100"
+    class="btn">
+
+        100%
+
+    </a>
+
+</div>
+
+<!-- DASHBOARD CARDS -->
 
 <div class="cards">
 
@@ -198,9 +274,19 @@
 
         <h3>📚 Study Planner</h3>
 
-        <p>Create and manage your daily study schedule effectively.</p>
+        <p>
 
-        <a href="/planner" class="btn">Open</a>
+            Create and manage your
+            daily study schedule effectively.
+
+        </p>
+
+        <a href="/planner"
+        class="btn">
+
+            Open
+
+        </a>
 
     </div>
 
@@ -208,9 +294,19 @@
 
         <h3>🎯 Career Roadmap</h3>
 
-        <p>Explore career paths and skill development plans.</p>
+        <p>
 
-        <a href="/career" class="btn">Explore</a>
+            Explore career paths
+            and skill development plans.
+
+        </p>
+
+        <a href="/career"
+        class="btn">
+
+            Explore
+
+        </a>
 
     </div>
 
@@ -218,9 +314,19 @@
 
         <h3>📰 Current Affairs</h3>
 
-        <p>Stay updated with latest educational and world news.</p>
+        <p>
 
-        <a href="/affairs" class="btn">Read</a>
+            Stay updated with
+            latest world and UPSC news.
+
+        </p>
+
+        <a href="/affairs"
+        class="btn">
+
+            Read
+
+        </a>
 
     </div>
 
@@ -228,11 +334,50 @@
 
         <h3>📖 Books Section</h3>
 
-        <p>Access learning materials and educational resources.</p>
+        <p>
 
-        <a href="/books" class="btn">View</a>
+            Access learning materials
+            and educational resources.
+
+        </p>
+
+        <a href="/books"
+        class="btn">
+
+            View
+
+        </a>
 
     </div>
+
+</div>
+
+<!-- DAILY NEWS -->
+
+<div class="daily-news">
+
+    <h2>
+
+        🔥 Daily News Updates
+
+    </h2>
+
+    <p>
+
+        Get daily live current affairs,
+        UPSC headlines,
+        economy updates,
+        science & technology news,
+        defence and international affairs.
+
+    </p>
+
+    <a href="/affairs"
+    class="btn">
+
+        Load Latest News
+
+    </a>
 
 </div>
 
