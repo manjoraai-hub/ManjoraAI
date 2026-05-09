@@ -2,112 +2,80 @@
 <html>
 
 <head>
+
     <title>Manjora AI Chatbot</title>
 
     <style>
 
         body{
+
+            font-family:Arial;
+            background:#0f172a;
+            color:white;
             margin:0;
             padding:0;
-            font-family:Arial;
-            background:linear-gradient(135deg,#0f172a,#1e3a8a);
-            color:white;
+
         }
 
-        .chat-container{
+        .container{
 
             width:80%;
-            max-width:900px;
+            max-width:700px;
             margin:40px auto;
             background:#1e293b;
-            border-radius:20px;
             padding:20px;
-            box-shadow:0px 0px 20px rgba(0,0,0,0.4);
+            border-radius:15px;
 
         }
 
         h1{
 
             text-align:center;
-            margin-bottom:20px;
 
         }
 
         #chat-box{
 
-            height:500px;
+            height:400px;
             overflow-y:auto;
+            background:#111827;
             padding:15px;
-            background:#0f172a;
-            border-radius:15px;
-            margin-bottom:20px;
+            border-radius:10px;
+            margin-bottom:15px;
 
         }
 
-        .user-message{
+        .user{
 
             text-align:right;
             margin:10px;
 
         }
 
-        .user-message span{
-
-            background:#ff4b2b;
-            padding:12px 18px;
-            border-radius:15px;
-            display:inline-block;
-
-        }
-
-        .bot-message{
+        .bot{
 
             text-align:left;
             margin:10px;
 
         }
 
-        .bot-message span{
+        input{
 
-            background:#2563eb;
-            padding:12px 18px;
-            border-radius:15px;
-            display:inline-block;
-
-        }
-
-        .input-area{
-
-            display:flex;
-            gap:10px;
-
-        }
-
-        #user-input{
-
-            flex:1;
-            padding:15px;
+            width:75%;
+            padding:12px;
             border:none;
-            border-radius:10px;
-            font-size:16px;
+            border-radius:8px;
 
         }
 
         button{
 
-            background:#ff4b2b;
-            color:white;
+            padding:12px;
             border:none;
-            padding:15px 25px;
-            border-radius:10px;
+            border-radius:8px;
+            background:#2563eb;
+            color:white;
             cursor:pointer;
-            font-size:16px;
-
-        }
-
-        button:hover{
-
-            background:#ff416c;
 
         }
 
@@ -117,37 +85,27 @@
 
 <body>
 
-    <div class="chat-container">
+<div class="container">
 
-        <h1>🚀 Manjora AI Mentor</h1>
+    <h1>🤖 Manjora AI</h1>
 
-        <div id="chat-box">
+    <div id="chat-box"></div>
 
-            <div class="bot-message">
-                <span>👋 Hello! I am Manjora AI.</span>
-            </div>
+    <input type="text" id="message" placeholder="Type message...">
 
-        </div>
+    <button onclick="sendMessage()">Send</button>
 
-        <div class="input-area">
-
-            <input type="text" id="user-input" placeholder="Ask anything...">
-
-            <button onclick="sendMessage()">Send</button>
-
-        </div>
-
-    </div>
+</div>
 
 <script>
 
 async function sendMessage(){
 
-    let input = document.getElementById("user-input");
+    let messageInput = document.getElementById("message");
 
-    let message = input.value;
+    let message = messageInput.value;
 
-    if(message.trim() === ""){
+    if(message === ""){
 
         return;
 
@@ -156,24 +114,12 @@ async function sendMessage(){
     let chatBox = document.getElementById("chat-box");
 
     chatBox.innerHTML += `
-
-        <div class="user-message">
-            <span>${message}</span>
+        <div class="user">
+            <b>You:</b> ${message}
         </div>
-
     `;
 
-    input.value = "";
-
-    chatBox.innerHTML += `
-
-        <div class="bot-message" id="thinking">
-            <span>Manjora AI is thinking...</span>
-        </div>
-
-    `;
-
-    chatBox.scrollTop = chatBox.scrollHeight;
+    messageInput.value = "";
 
     try{
 
@@ -193,33 +139,25 @@ async function sendMessage(){
 
         let data = await response.json();
 
-        document.getElementById("thinking").remove();
-
         chatBox.innerHTML += `
-
-            <div class="bot-message">
-                <span>${data.reply}</span>
+            <div class="bot">
+                <b>AI:</b> ${data.reply}
             </div>
-
         `;
-
-        chatBox.scrollTop = chatBox.scrollHeight;
 
     }
 
     catch(error){
 
-        document.getElementById("thinking").remove();
-
         chatBox.innerHTML += `
-
-            <div class="bot-message">
-                <span>⚠️ Error connecting to AI server.</span>
+            <div class="bot">
+                <b>AI:</b> Error connecting server.
             </div>
-
         `;
 
     }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
 
 }
 
