@@ -1,111 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>AI EDU MENTOR</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="UE4R0Wo4502c_lxt8UrAEuKHNHhigCFWg_OfGSRdmXQ" />
+
+    <title>Manjora AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
-<body id="body">
+<body>
 
-<div class="container">
+    <div class="container">
 
-<button onclick="toggleDarkMode()" id="darkBtn">
+        <h1>🚀 AI EDU MENTOR</h1>
 
-🌙 Dark Mode
+        <p>
+            Smart Learning Platform for Students, UPSC Aspirants & Professionals
+        </p>
 
-</button>
+        <div class="card-container">
 
-<h1>🚀 AI EDU MENTOR</h1>
+            <div class="card">
 
-<p class="subtitle">
+                <h2>📚 UPSC Guidance</h2>
 
-Smart Learning Platform for Students,
-UPSC Aspirants & Professionals
+                <p>
+                    Study plans, current affairs, booklists and strategy.
+                </p>
 
-</p>
+            </div>
 
-<div class="cards">
+            <div class="card">
 
-<a href="/books" class="card">
+                <h2>💻 Programming</h2>
 
-📚
+                <p>
+                    Learn coding, DSA, projects and placements.
+                </p>
 
-<h2>UPSC Guidance</h2>
+            </div>
 
-<p>
+            <div class="card">
 
-Study plans, current affairs,
-booklists and strategy.
+                <h2>🎯 Career Roadmaps</h2>
 
-</p>
+                <p>
+                    Personalized learning paths for every career goal.
+                </p>
 
-</a>
+            </div>
 
-<a href="/planner" class="card">
+        </div>
 
-💻
+        <a href="/login">
 
-<h2>Programming</h2>
+            <button>
+                Start Learning
+            </button>
 
-<p>
+        </a>
 
-Learn coding, DSA,
-projects and placements.
-
-</p>
-
-</a>
-
-<a href="/career" class="card">
-
-🎯
-
-<h2>Career Roadmaps</h2>
-
-<p>
-
-Personalized learning
-paths for every career goal.
-
-</p>
-
-</a>
-
-<a href="/chatbot" class="card">
-
-🤖
-
-<h2>AI Mentor</h2>
-
-<p>
-
-Ask career and study
-related questions instantly.
-
-</p>
-
-</a>
-
-</div>
-
-<a href="/login">
-
-<button>
-
-Start Learning
-
-</button>
-
-</a>
-
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
 
 </body>
+
 </html>
