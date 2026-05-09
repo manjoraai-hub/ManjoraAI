@@ -1,3 +1,5 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
 <!DOCTYPE html>
 <html>
 
@@ -427,5 +429,5 @@ function deleteTask(button){
     <button onclick="resetStreak()">
         Reset
     </button>
-
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </div>

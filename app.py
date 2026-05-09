@@ -3,13 +3,45 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # =========================
-# HOME PAGE
+# DASHBOARD
 # =========================
 
 @app.route('/')
-def home():
+@app.route('/dashboard')
+def dashboard():
 
     return render_template('dashboard.html')
+
+
+# =========================
+# PLANNER
+# =========================
+
+@app.route('/planner')
+def planner():
+
+    return render_template('planner.html')
+
+
+# =========================
+# CAREER
+# =========================
+
+@app.route('/career')
+def career():
+
+    return render_template('career.html')
+
+
+# =========================
+# BOOKS
+# =========================
+
+@app.route('/books')
+def books():
+
+    return render_template('books.html')
+
 
 # =========================
 # CURRENT AFFAIRS
@@ -28,7 +60,7 @@ def affairs():
             "Government introduces smart classrooms and digital learning initiatives.",
 
             "url":
-            "https://www.thehindu.com/news/national/",
+            "https://www.thehindu.com/",
 
             "image":
             "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
@@ -42,7 +74,7 @@ def affairs():
             "Students increasingly use AI-based platforms for study planning and revision.",
 
             "url":
-            "https://indianexpress.com/latest-news/",
+            "https://indianexpress.com/",
 
             "image":
             "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
@@ -54,6 +86,7 @@ def affairs():
         'affairs.html',
         articles=articles
     )
+
 
 # =========================
 # RUN APP
