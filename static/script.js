@@ -511,3 +511,30 @@ function resetTimer(){
     updateTimer();
 
 }
+const quotes = [
+
+    "Success doesn't come from motivation alone. It comes from consistency.",
+
+    "Small progress every day adds up to big results.",
+
+    "Discipline is stronger than motivation.",
+
+    "Dream big. Start small. Act now.",
+
+    "Focus on progress, not perfection.",
+
+    "Winners are not people who never fail, but people who never quit.",
+
+    "Consistency creates confidence.",
+
+    "Push yourself because no one else will do it for you."
+
+];
+
+function newQuote(){
+
+    let random = Math.floor(Math.random() * quotes.length);
+
+    document.getElementById("quote").innerText = quotes[random];
+
+}
