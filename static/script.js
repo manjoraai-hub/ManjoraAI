@@ -538,3 +538,24 @@ function newQuote(){
     document.getElementById("quote").innerText = quotes[random];
 
 }
+window.onload = function(){
+
+    let savedNotes = localStorage.getItem("study_notes");
+
+    if(savedNotes){
+
+        document.getElementById("notes").value = savedNotes;
+
+    }
+
+}
+
+function saveNotes(){
+
+    let notes = document.getElementById("notes").value;
+
+    localStorage.setItem("study_notes", notes);
+
+    alert("✅ Notes Saved Successfully");
+
+}
