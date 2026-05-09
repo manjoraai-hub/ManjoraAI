@@ -1,60 +1,69 @@
 <!DOCTYPE html>
-<html>
+                Watch Lecture
 
-<head>
+            </a>
 
-<title>Books</title>
+        </div>
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+        <div class="book-card book-item">
 
-</head>
+            <h2>📊 Data Science</h2>
 
-<body>
+            <p>Statistics, Pandas, NumPy and visualization.</p>
 
-<div class="container">
+            <a href="https://www.kaggle.com/learn"
+            target="_blank"
+            class="btn">
 
-<h1>📚 Book Recommendations</h1>
+                Read Notes
 
-<select id="category">
+            </a>
 
-    <option value="">Select Category</option>
+            <a href="https://www.youtube.com/watch?v=ua-CiDNNj30"
+            target="_blank"
+            class="btn">
 
-    <option value="UPSC">UPSC</option>
+                Watch Lecture
 
-    <option value="Programming">Programming</option>
+            </a>
 
-    <option value="Engineering">Engineering</option>
+        </div>
 
-</select>
-
-<select id="subject">
-
-    <option value="">Select Subject</option>
-
-    <option value="Polity">Polity</option>
-
-    <option value="History">History</option>
-
-    <option value="Python">Python</option>
-
-    <option value="DSA">DSA</option>
-
-    <option value="VLSI">VLSI</option>
-
-</select>
-
-<button onclick="getBooks()">
-
-    Show Books
-
-</button>
-
-<ul id="bookList"></ul>
+    </div>
 
 </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script>
+
+function searchBooks(){
+
+    let input =
+    document.getElementById("searchInput").value.toLowerCase();
+
+    let cards =
+    document.getElementsByClassName("book-item");
+
+    for(let i = 0; i < cards.length; i++){
+
+        let text = cards[i].innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            cards[i].style.display = "block";
+
+        }
+
+        else{
+
+            cards[i].style.display = "none";
+
+        }
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
