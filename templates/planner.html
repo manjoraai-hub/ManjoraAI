@@ -449,6 +449,50 @@ Reset
 
 </div>
 
+<!-- AI CHATBOT -->
+
+<div class="planner-box">
+
+<h2>🤖 Manjora AI Chatbot</h2>
+
+<div id="chatBox"
+style="
+height:300px;
+overflow-y:auto;
+background:#0f172a;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+margin-bottom:15px;
+">
+
+<div style="
+background:#1e293b;
+padding:12px;
+border-radius:12px;
+color:#38bdf8;
+margin-bottom:10px;
+">
+
+🤖 Hello! I am Manjora AI. Ask me about studies, coding, UPSC, productivity or careers.
+
+</div>
+
+</div>
+
+<input type="text"
+id="userMessage"
+placeholder="Ask Manjora AI anything...">
+
+<button onclick="sendMessage()">
+
+Send Message
+
+</button>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
