@@ -1,439 +1,144 @@
-// BOOK RECOMMENDATION SYSTEM
-
-async function getBooks(){
-
-    let category =
-    document.getElementById("category")?.value;
-
-    let subject =
-    document.getElementById("subject")?.value;
-
-    if(category === "" || subject === ""){
-
-        alert("Please select category and subject");
-
-        return;
-    }
-
-    let response =
-    await fetch(
-        `/get_books?category=${category}&subject=${subject}`
-    );
-
-    let books =
-    await response.json();
-
-    let bookList =
-    document.getElementById("bookList");
-
-    if(!bookList){
-        return;
-    }
-
-    bookList.innerHTML = "";
-
-    books.forEach(book => {
-
-        let li =
-        document.createElement("li");
-
-        li.innerText =
-        "📘 " + book;
-
-        bookList.appendChild(li);
-    });
-}
-
-
-// CAREER ROADMAP
-
-async function getRoadmap(){
-
-    let goal =
-    document.getElementById("careerGoal")?.value;
-
-    if(goal === ""){
-
-        alert("Please select a career goal");
-
-        return;
-    }
-
-    let response =
-    await fetch(
-        `/get_roadmap?goal=${goal}`
-    );
-
-    let roadmap =
-    await response.json();
-
-    let roadmapList =
-    document.getElementById("roadmapList");
-
-    if(!roadmapList){
-        return;
-    }
-
-    roadmapList.innerHTML = "";
-
-    roadmap.forEach(step => {
-
-        let li =
-        document.createElement("li");
-
-        li.innerText =
-        "🚀 " + step;
-
-        roadmapList.appendChild(li);
-    });
-}
-
-
+// =========================
 // STUDY PLANNER
+// =========================
 
 let totalTasks = 0;
-let totalHours = 0;
+let completedTasks = 0;
 
-let subjects = [];
-let hoursData = [];
+function updateProgress(){
 
-function addStudyTask(){
+    document.getElementById("total-tasks").innerText =
+    totalTasks;
 
-    let subject =
-    document.getElementById("subject")?.value;
+    document.getElementById("completed-tasks").innerText =
+    completedTasks;
 
-    let hours =
-    parseInt(
-        document.getElementById("hours")?.value
-    );
+    let progress = 0;
 
-    if(subject === "" || isNaN(hours)){
+    if(totalTasks > 0){
 
-        alert("Please enter subject and hours");
+        progress =
+        (completedTasks / totalTasks) * 100;
+    }
+
+    document.getElementById("progress-bar").style.width =
+    progress + "%";
+
+    document.getElementById("progress-bar").innerText =
+    Math.round(progress) + "%";
+}
+
+function addTask(){
+
+    let time =
+    document.getElementById("time").value;
+
+    let task =
+    document.getElementById("task").value;
+
+    if(time === "" || task === ""){
+
+        alert("Please enter all fields");
 
         return;
     }
-
-    let studyList =
-    document.getElementById("studyList");
-
-    let li =
-    document.createElement("li");
-
-    li.innerText =
-    "📘 " + subject + " — " + hours + " Hours";
-
-    studyList.appendChild(li);
 
     totalTasks++;
-    totalHours += hours;
 
-    let totalTasksElement =
-    document.getElementById("totalTasks");
+    updateProgress();
 
-    let totalHoursElement =
-    document.getElementById("totalHours");
-
-    if(totalTasksElement){
-
-        totalTasksElement.innerText =
-        totalTasks;
-    }
-
-    if(totalHoursElement){
-
-        totalHoursElement.innerText =
-        totalHours;
-    }
-
-    subjects.push(subject);
-
-    hoursData.push(hours);
-
-    updateChart();
-
-    document.getElementById("subject").value = "";
-
-    document.getElementById("hours").value = "";
-}
-
-
-// SMART TIMETABLE
-
-function generateTimetable(){
-
-    let timetable =
-    document.getElementById("timetable");
-
-    if(!timetable){
-        return;
-    }
-
-    timetable.innerHTML = "";
-
-    let startHour = 9;
-
-    subjects.forEach((subject,index) => {
-
-        let div =
-        document.createElement("div");
-
-        div.className = "timetable-card";
-
-        let endHour =
-        startHour + hoursData[index];
-
-        div.innerText =
-        `📚 ${startHour}:00 - ${endHour}:00 → ${subject}`;
-
-        timetable.appendChild(div);
-
-        startHour = endHour + 1;
-    });
-}
-
-
-// POMODORO TIMER
-
-let time = 25 * 60;
-
-let timerInterval;
-
-function startTimer(){
-
-    clearInterval(timerInterval);
-
-    timerInterval = setInterval(() => {
-
-        let minutes =
-        Math.floor(time / 60);
-
-        let seconds =
-        time % 60;
-
-        seconds =
-        seconds < 10 ? "0" + seconds : seconds;
-
-        let timer =
-        document.getElementById("timer");
-
-        if(timer){
-
-            timer.innerText =
-            `${minutes}:${seconds}`;
-        }
-
-        if(time > 0){
-
-            time--;
-
-        }else{
-
-            clearInterval(timerInterval);
-
-            alert("Study Session Complete!");
-        }
-
-    },1000);
-}
-
-function resetTimer(){
-
-    clearInterval(timerInterval);
-
-    time = 25 * 60;
-
-    let timer =
-    document.getElementById("timer");
-
-    if(timer){
-
-        timer.innerText =
-        "25:00";
-    }
-}
-
-
-// PRODUCTIVITY CHART
-
-let chart;
-
-function updateChart(){
-
-    let chartCanvas =
-    document.getElementById("studyChart");
-
-    if(!chartCanvas){
-
-        return;
-    }
-
-    if(chart){
-
-        chart.destroy();
-    }
-
-    chart = new Chart(chartCanvas, {
-
-        type: 'bar',
-
-        data: {
-
-            labels: subjects,
-
-            datasets: [{
-
-                label: 'Study Hours',
-
-                data: hoursData,
-
-                borderWidth: 1
-            }]
-        },
-
-        options: {
-
-            responsive: true
-        }
-    });
-}
-
-
-// AI CHATBOT
-
-async function sendMessage(){
-
-    let userMessage =
-    document.getElementById("userMessage")?.value;
-
-    if(userMessage === ""){
-
-        return;
-    }
-
-    let chatBox =
-    document.getElementById("chatBox");
-
-    if(!chatBox){
-        return;
-    }
-
-    chatBox.innerHTML +=
-    `<div class="user-chat">
-        🧑 ${userMessage}
-    </div>`;
-
-    let response =
-    await fetch('/chat', {
-
-        method: 'POST',
-
-        headers: {
-
-            'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-
-            message: userMessage
-        })
-    });
-
-    let data =
-    await response.json();
-
-    chatBox.innerHTML +=
-    `<div class="bot-chat">
-        🤖 ${data.reply}
-    </div>`;
-
-    document.getElementById("userMessage").value = "";
-
-    chatBox.scrollTop =
-    chatBox.scrollHeight;
-}
-
-
-// CURRENT AFFAIRS
-
-async function loadNews(){
-
-    let response =
-    await fetch('/get_news');
-
-    let news =
-    await response.json();
-
-    let newsContainer =
-    document.getElementById("newsContainer");
-
-    if(!newsContainer){
-        return;
-    }
-
-    newsContainer.innerHTML = "";
-
-    news.forEach(item => {
-
-        let div =
-        document.createElement("div");
-
-        div.className = "news-card";
-
-        div.innerText = item;
-
-        newsContainer.appendChild(div);
-    });
-}
-
-
-// REMINDER SYSTEM
-
-function addReminder(){
-
-    let reminderInput =
-    document.getElementById("reminderInput");
-
-    if(!reminderInput){
-        return;
-    }
-
-    let reminderText =
-    reminderInput.value;
-
-    if(reminderText === ""){
-
-        alert("Please enter reminder");
-
-        return;
-    }
-
-    let reminderList =
-    document.getElementById("reminderList");
+    let taskList =
+    document.getElementById("task-list");
 
     let div =
     document.createElement("div");
 
-    div.className =
-    "reminder-card";
+    div.className = "task";
 
-    div.innerText =
-    "🔔 " + reminderText;
+    div.innerHTML = `
 
-    reminderList.appendChild(div);
+        <div>
+            <input type="checkbox"
+            onchange="completeTask(this)">
 
-    reminderInput.value = "";
+            <b>${time}</b> - ${task}
+        </div>
+
+        <button class="delete-btn"
+        onclick="deleteTask(this)">
+            Delete
+        </button>
+    `;
+
+    taskList.appendChild(div);
+
+    document.getElementById("time").value = "";
+    document.getElementById("task").value = "";
+}
+
+function completeTask(checkbox){
+
+    if(checkbox.checked){
+
+        completedTasks++;
+
+    }else{
+
+        completedTasks--;
+    }
+
+    updateProgress();
+}
+
+function deleteTask(button){
+
+    let parent = button.parentElement;
+
+    let checkbox =
+    parent.querySelector("input");
+
+    if(checkbox.checked){
+
+        completedTasks--;
+    }
+
+    totalTasks--;
+
+    updateProgress();
+
+    parent.remove();
 }
 
 
-// DARK MODE
+// =========================
+// JOB PREPARATION PLANS
+// =========================
 
-function toggleDarkMode(){
+function openSoftware(){
 
-    document.body.classList.toggle("dark-mode");
+    window.location.href = "/software";
 }
 
-console.log("AI EDU MENTOR Loaded Successfully");
+function openUPSC(){
+
+    window.location.href = "/upsc";
+}
+
+function openBanking(){
+
+    window.location.href = "/banking";
+}
+
+function openGate(){
+
+    window.location.href = "/gate";
+}
+
+
+// =========================
+// POMODORO TIMER
+// =========================
+
 let timer;
 let minutes = 25;
 let seconds = 0;
@@ -441,13 +146,14 @@ let running = false;
 
 function updateTimer(){
 
-    let displayMinutes = String(minutes).padStart(2,'0');
+    let displayMinutes =
+    String(minutes).padStart(2,'0');
 
-    let displaySeconds = String(seconds).padStart(2,'0');
+    let displaySeconds =
+    String(seconds).padStart(2,'0');
 
     document.getElementById("timer").innerText =
-        `${displayMinutes}:${displaySeconds}`;
-
+    `${displayMinutes}:${displaySeconds}`;
 }
 
 function startTimer(){
@@ -469,25 +175,19 @@ function startTimer(){
                 running = false;
 
                 return;
-
             }
 
             minutes--;
-
             seconds = 59;
 
-        }
-
-        else{
+        }else{
 
             seconds--;
-
         }
 
         updateTimer();
 
     },1000);
-
 }
 
 function pauseTimer(){
@@ -495,7 +195,6 @@ function pauseTimer(){
     clearInterval(timer);
 
     running = false;
-
 }
 
 function resetTimer(){
@@ -505,131 +204,170 @@ function resetTimer(){
     running = false;
 
     minutes = 25;
-
     seconds = 0;
 
     updateTimer();
-
 }
+
+
+// =========================
+// DAILY MOTIVATION
+// =========================
+
 const quotes = [
 
-    "Success doesn't come from motivation alone. It comes from consistency.",
+"Success doesn't come from motivation alone. It comes from consistency.",
 
-    "Small progress every day adds up to big results.",
+"Small progress every day adds up to big results.",
 
-    "Discipline is stronger than motivation.",
+"Discipline is stronger than motivation.",
 
-    "Dream big. Start small. Act now.",
+"Dream big. Start small. Act now.",
 
-    "Focus on progress, not perfection.",
+"Focus on progress, not perfection.",
 
-    "Winners are not people who never fail, but people who never quit.",
+"Winners are not people who never fail, but people who never quit.",
 
-    "Consistency creates confidence.",
+"Consistency creates confidence.",
 
-    "Push yourself because no one else will do it for you."
+"Push yourself because no one else will do it for you.",
+
+"Study while others are sleeping.",
+
+"Your future is created by what you do today."
 
 ];
 
 function newQuote(){
 
-    let random = Math.floor(Math.random() * quotes.length);
+    let random =
+    Math.floor(Math.random() * quotes.length);
 
-    document.getElementById("quote").innerText = quotes[random];
-
+    document.getElementById("quote").innerText =
+    quotes[random];
 }
+
+
+// =========================
+// QUICK NOTES
+// =========================
+
 window.onload = function(){
 
-    let savedNotes = localStorage.getItem("study_notes");
+    let savedNotes =
+    localStorage.getItem("study_notes");
 
     if(savedNotes){
 
-        document.getElementById("notes").value = savedNotes;
-
+        document.getElementById("notes").value =
+        savedNotes;
     }
 
+    let streak =
+    localStorage.getItem("study_streak");
+
+    if(streak === null){
+
+        streak = 0;
+    }
+
+    document.getElementById("streak-count").innerText =
+    streak + " Days";
 }
 
 function saveNotes(){
 
-    let notes = document.getElementById("notes").value;
+    let notes =
+    document.getElementById("notes").value;
 
-    localStorage.setItem("study_notes", notes);
+    localStorage.setItem(
+        "study_notes",
+        notes
+    );
 
     alert("✅ Notes Saved Successfully");
-
 }
+
+
+// =========================
+// GOAL TRACKER
+// =========================
+
 function addGoal(){
 
-    let goalInput = document.getElementById("goal-input");
+    let goalInput =
+    document.getElementById("goal-input");
 
-    let goal = goalInput.value;
+    let goal =
+    goalInput.value;
 
     if(goal === ""){
 
         alert("Please enter a goal");
 
         return;
-
     }
 
-    let goalList = document.getElementById("goal-list");
+    let goalList =
+    document.getElementById("goal-list");
 
-    let div = document.createElement("div");
+    let div =
+    document.createElement("div");
 
     div.className = "task";
 
     div.innerHTML = `
 
         <div>
-
             🎯 ${goal}
-
         </div>
 
         <button class="delete-btn"
         onclick="this.parentElement.remove()">
-
             Remove
-
         </button>
-
     `;
 
     goalList.appendChild(div);
 
     goalInput.value = "";
-
-}
-let streak = localStorage.getItem("study_streak");
-
-if(streak === null){
-
-    streak = 0;
-
 }
 
-document.getElementById("streak-count").innerText =
-    streak + " Days";
+
+// =========================
+// STUDY STREAK
+// =========================
 
 function increaseStreak(){
 
+    let streak =
+    localStorage.getItem("study_streak");
+
+    if(streak === null){
+
+        streak = 0;
+    }
+
     streak++;
 
-    localStorage.setItem("study_streak", streak);
+    localStorage.setItem(
+        "study_streak",
+        streak
+    );
 
     document.getElementById("streak-count").innerText =
-        streak + " Days";
-
+    streak + " Days";
 }
 
 function resetStreak(){
 
-    streak = 0;
-
-    localStorage.setItem("study_streak", streak);
+    localStorage.setItem(
+        "study_streak",
+        0
+    );
 
     document.getElementById("streak-count").innerText =
-        streak + " Days";
-
+    "0 Days";
 }
+
+console.log("🚀 Manjora AI Loaded Successfully");
