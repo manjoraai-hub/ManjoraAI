@@ -13,6 +13,55 @@ content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 href="{{ url_for('static', filename='style.css') }}">
 
+<style>
+
+/* DARK MODE STYLES */
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .navbar{
+    background:#000;
+}
+
+.dark-mode .hero{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#1e1e1e;
+    color:white;
+    box-shadow:0 4px 10px rgba(255,255,255,0.1);
+}
+
+.dark-mode .stat-box{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode .footer{
+    background:#000;
+    color:white;
+}
+
+.dark-mode a{
+    color:white;
+}
+
+#darkModeBtn{
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -38,6 +87,15 @@ href="{{ url_for('static', filename='style.css') }}">
         <a href="/books">Books</a>
 
         <a href="/affairs">Current Affairs</a>
+
+        <!-- DARK MODE BUTTON -->
+
+        <button id="darkModeBtn"
+        onclick="toggleDarkMode()">
+
+            🌙 Dark Mode
+
+        </button>
 
     </div>
 
@@ -288,6 +346,43 @@ href="{{ url_for('static', filename='style.css') }}">
     🚀 Manjora AI © 2026 | Built for Smart Learners
 
 </div>
+
+<!-- DARK MODE SCRIPT -->
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+
+        localStorage.setItem("theme","dark");
+
+        document.getElementById("darkModeBtn").innerHTML =
+        "☀️ Light Mode";
+
+    }else{
+
+        localStorage.setItem("theme","light");
+
+        document.getElementById("darkModeBtn").innerHTML =
+        "🌙 Dark Mode";
+    }
+}
+
+window.onload = function(){
+
+    if(localStorage.getItem("theme") === "dark"){
+
+        document.body.classList.add("dark-mode");
+
+        document.getElementById("darkModeBtn").innerHTML =
+        "☀️ Light Mode";
+    }
+}
+
+</script>
 
 </body>
 
