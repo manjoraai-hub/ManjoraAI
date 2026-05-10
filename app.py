@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
@@ -25,12 +24,14 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        # Simple demo login
+        # Demo Login
+
         if username and password:
 
             return redirect(url_for('dashboard'))
 
     return render_template('login.html')
+
 
 # =========================
 # REGISTER
@@ -44,6 +45,8 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html')
+
+
 # =========================
 # DASHBOARD
 # =========================
@@ -127,6 +130,46 @@ def affairs():
         'affairs.html',
         articles=articles
     )
+
+
+# =========================
+# SOFTWARE JOBS
+# =========================
+
+@app.route('/software')
+def software():
+
+    return render_template('software.html')
+
+
+# =========================
+# UPSC
+# =========================
+
+@app.route('/upsc')
+def upsc():
+
+    return render_template('upsc.html')
+
+
+# =========================
+# BANKING
+# =========================
+
+@app.route('/banking')
+def banking():
+
+    return render_template('banking.html')
+
+
+# =========================
+# GATE
+# =========================
+
+@app.route('/gate')
+def gate():
+
+    return render_template('gate.html')
 
 
 # =========================

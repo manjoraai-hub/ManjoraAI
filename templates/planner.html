@@ -1,162 +1,180 @@
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Manjora AI Planner</title>
+<meta charset="UTF-8">
 
-    <style>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-        body{
-            margin:0;
-            padding:0;
-            font-family:Arial;
-            background:#0f172a;
-            color:white;
-        }
+<title>Manjora AI Planner</title>
 
-        .navbar{
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
 
-            background:#1e293b;
-            padding:15px 30px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
+<style>
 
-        }
+body{
 
-        .navbar h2{
+margin:0;
+padding:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
 
-            margin:0;
-            color:#38bdf8;
+}
 
-        }
+.navbar{
 
-        .navbar a{
+background:#1e293b;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-            color:white;
-            text-decoration:none;
-            margin-left:20px;
+}
 
-        }
+.navbar h2{
 
-        .container{
+margin:0;
+color:#38bdf8;
 
-            width:90%;
-            max-width:1000px;
-            margin:auto;
-            padding:30px;
+}
 
-        }
+.navbar a{
 
-        h1{
+color:white;
+text-decoration:none;
+margin-left:20px;
 
-            text-align:center;
-            margin-bottom:30px;
+}
 
-        }
+.container{
 
-        .planner-box{
+width:90%;
+max-width:1100px;
+margin:auto;
+padding:30px;
 
-            background:#1e293b;
-            padding:25px;
-            border-radius:20px;
-            margin-bottom:30px;
+}
 
-        }
+h1{
 
-        input{
+text-align:center;
+margin-bottom:30px;
 
-            width:40%;
-            padding:12px;
-            border:none;
-            border-radius:10px;
-            margin:10px;
+}
 
-        }
+.planner-box{
 
-        button{
+background:#1e293b;
+padding:25px;
+border-radius:20px;
+margin-bottom:30px;
 
-            padding:12px 20px;
-            border:none;
-            border-radius:10px;
-            background:#2563eb;
-            color:white;
-            cursor:pointer;
+}
 
-        }
+input,
+textarea{
 
-        button:hover{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+margin-bottom:10px;
 
-            background:#1d4ed8;
+}
 
-        }
+button{
 
-        .task{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+cursor:pointer;
 
-            background:#334155;
-            padding:15px;
-            border-radius:12px;
-            margin-top:15px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
+}
 
-        }
+button:hover{
 
-        .delete-btn{
+background:#1d4ed8;
 
-            background:#ef4444;
+}
 
-        }
+.task{
 
-        .delete-btn:hover{
+background:#334155;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-            background:#dc2626;
+}
 
-        }
+.delete-btn{
 
-        .section-title{
+background:#ef4444;
 
-            margin-top:40px;
-            color:#38bdf8;
+}
 
-        }
+.delete-btn:hover{
 
-        .job-cards{
+background:#dc2626;
 
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:20px;
-            margin-top:20px;
+}
 
-        }
+.section-title{
 
-        .job-card{
+margin-top:40px;
+color:#38bdf8;
 
-            background:#1e293b;
-            padding:20px;
-            border-radius:20px;
-            text-align:center;
-            transition:0.3s;
+}
 
-        }
+.job-cards{
 
-        .job-card:hover{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
 
-            transform:translateY(-8px);
+}
 
-        }
+.job-card{
 
-        .job-card h3{
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+text-align:center;
+transition:0.3s;
 
-            color:#38bdf8;
+}
 
-        }
+.job-card:hover{
 
-    </style>
+transform:translateY(-8px);
+
+}
+
+.job-card h3{
+
+color:#38bdf8;
+
+}
+
+.job-link{
+
+text-decoration:none;
+color:white;
+
+}
+
+</style>
 
 </head>
 
@@ -164,268 +182,274 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <div class="navbar">
 
-    <h2>🚀 Manjora AI Planner</h2>
+<h2>🚀 Manjora AI Planner</h2>
 
-    <div>
+<div>
 
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
+<a href="/">Home</a>
 
-    </div>
+<a href="/dashboard">Dashboard</a>
+
+</div>
 
 </div>
 
 <div class="container">
 
-    <h1>📅 Daily Time Table Planner</h1>
+<h1>📅 Daily Time Table Planner</h1>
 
-    <div class="planner-box">
+<!-- STUDY PROGRESS -->
 
-        <h2>📊 Study Progress</h2>
+<div class="planner-box">
 
-        <p>Total Tasks: <span id="total-tasks">0</span></p>
+<h2>📊 Study Progress</h2>
 
-        <p>Completed Tasks: <span id="completed-tasks">0</span></p>
+<p>Total Tasks:
+<span id="total-tasks">0</span></p>
 
-        <div style="background:#334155;border-radius:10px;height:25px;overflow:hidden;">
+<p>Completed Tasks:
+<span id="completed-tasks">0</span></p>
 
-            <div id="progress-bar"
-            style="height:100%;width:0%;background:#22c55e;text-align:center;line-height:25px;">
-            0%
-            </div>
+<div style="background:#334155;
+border-radius:10px;
+height:25px;
+overflow:hidden;">
 
-        </div>
+<div id="progress-bar"
+style="height:100%;
+width:0%;
+background:#22c55e;
+text-align:center;
+line-height:25px;">
 
-    </div>
-
-    <div class="planner-box">
-
-        <input type="text" id="time" placeholder="Enter Time">
-
-        <input type="text" id="task" placeholder="Enter Task">
-
-        <button onclick="addTask()">Add Task</button>
-
-        <div id="task-list"></div>
-
-    </div>
-
-    <h2 class="section-title">🎯 Job Preparation Plans</h2>
-
-    <h2 class="section-title">🎯 Job Preparation Plans</h2>
-
-            <h3>💻 Software Jobs</h3>
-
-            <p>DSA, Projects, Aptitude, Interview Prep</p>
-
-        </div>
-
-        <div class="job-card">
-
-            <h3>📚 UPSC</h3>
-
-            <p>NCERT, Current Affairs, Optional Strategy</p>
-
-        </div>
-
-        <div class="job-card">
-
-            <h3>🏦 Banking</h3>
-
-            <p>Reasoning, Quantitative Aptitude, GK</p>
-
-        </div>
-
-        <div class="job-card">
-
-            <h3>⚡ GATE</h3>
-
-            <p>Core Subjects, PYQs, Mock Tests</p>
-
-        </div>
-
-    </div>
+0%
 
 </div>
 
-<script>
+</div>
 
-let totalTasks = 0;
-let completedTasks = 0;
+</div>
 
-function updateProgress(){
+<!-- TASKS -->
 
-    document.getElementById("total-tasks").innerText = totalTasks;
+<div class="planner-box">
 
-    document.getElementById("completed-tasks").innerText = completedTasks;
+<input type="text"
+id="time"
+placeholder="Enter Time">
 
-    let progress = 0;
+<input type="text"
+id="task"
+placeholder="Enter Task">
 
-    if(totalTasks > 0){
+<button onclick="addTask()">
 
-        progress = (completedTasks / totalTasks) * 100;
+Add Task
 
-    }
+</button>
 
-    document.getElementById("progress-bar").style.width = progress + "%";
+<div id="task-list"></div>
 
-    document.getElementById("progress-bar").innerText = Math.round(progress) + "%";
+</div>
 
-}
+<!-- JOB CARDS -->
 
-function addTask(){
+<h2 class="section-title">
 
-    let time = document.getElementById("time").value;
+🎯 Job Preparation Plans
 
-    let task = document.getElementById("task").value;
+</h2>
 
-    if(time === "" || task === ""){
+<div class="job-cards">
 
-        alert("Please enter all fields");
+<a href="/software"
+class="job-link">
 
-        return;
+<div class="job-card">
 
-    }
+<h3>💻 Software Jobs</h3>
 
-    totalTasks++;
+<p>
 
-    updateProgress();
+DSA, Projects,
+Aptitude,
+Interview Prep
 
-    let taskList = document.getElementById("task-list");
+</p>
 
-    let div = document.createElement("div");
+</div>
 
-    div.className = "task";
+</a>
 
-    div.innerHTML = `
+<a href="/upsc"
+class="job-link">
 
-        <div>
+<div class="job-card">
 
-            <input type="checkbox" onchange="completeTask(this)">
+<h3>📚 UPSC</h3>
 
-            <b>${time}</b> - ${task}
+<p>
 
-        </div>
+NCERT,
+Current Affairs,
+Optional Strategy
 
-        <button class="delete-btn" onclick="deleteTask(this)">
-            Delete
-        </button>
+</p>
 
-    `;
+</div>
 
-    taskList.appendChild(div);
+</a>
 
-    document.getElementById("time").value = "";
+<a href="/banking"
+class="job-link">
 
-    document.getElementById("task").value = "";
+<div class="job-card">
 
-}
+<h3>🏦 Banking</h3>
 
-function completeTask(checkbox){
+<p>
 
-    if(checkbox.checked){
+Reasoning,
+Quantitative Aptitude,
+GK
 
-        completedTasks++;
+</p>
 
-    }else{
+</div>
 
-        completedTasks--;
+</a>
 
-    }
+<a href="/gate"
+class="job-link">
 
-    updateProgress();
+<div class="job-card">
 
-}
+<h3>⚡ GATE</h3>
 
-function deleteTask(button){
+<p>
 
-    let parent = button.parentElement;
+Core Subjects,
+PYQs,
+Mock Tests
 
-    let checkbox = parent.querySelector("input");
+</p>
 
-    if(checkbox.checked){
+</div>
 
-        completedTasks--;
+</a>
 
-    }
+</div>
 
-    totalTasks--;
+<!-- POMODORO -->
 
-    updateProgress();
+<div class="planner-box">
 
-    parent.remove();
+<h2>⏳ Pomodoro Focus Timer</h2>
 
-}
+<h1 id="timer">25:00</h1>
 
-</script>
+<button onclick="startTimer()">
+Start
+</button>
+
+<button onclick="pauseTimer()">
+Pause
+</button>
+
+<button onclick="resetTimer()">
+Reset
+</button>
+
+</div>
+
+<!-- MOTIVATION -->
+
+<div class="planner-box">
+
+<h2>🔥 Daily Motivation</h2>
+
+<h3 id="quote">
+
+Success doesn't come from motivation alone.
+It comes from consistency.
+
+</h3>
+
+<button onclick="newQuote()">
+
+New Quote
+
+</button>
+
+</div>
+
+<!-- NOTES -->
+
+<div class="planner-box">
+
+<h2>📝 Quick Study Notes</h2>
+
+<textarea id="notes"
+placeholder="Write your study notes here..."
+style="height:180px;"></textarea>
+
+<button onclick="saveNotes()">
+
+Save Notes
+
+</button>
+
+</div>
+
+<!-- GOALS -->
+
+<div class="planner-box">
+
+<h2>🎯 Goal Tracker</h2>
+
+<input type="text"
+id="goal-input"
+placeholder="Enter your goal">
+
+<button onclick="addGoal()">
+
+Add Goal
+
+</button>
+
+<div id="goal-list"></div>
+
+</div>
+
+<!-- STREAK -->
+
+<div class="planner-box">
+
+<h2>🔥 Study Streak</h2>
+
+<h1 id="streak-count">
+
+0 Days
+
+</h1>
+
+<button onclick="increaseStreak()">
+
+Mark Today Complete
+
+</button>
+
+<button onclick="resetStreak()">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
-
 </html>
-<h2 class="section-title">🎯 Job Preparation Plans</h2>
-<div class="planner-box">
-
-    <h2>⏳ Pomodoro Focus Timer</h2>
-
-    <h1 id="timer">25:00</h1>
-
-    <button onclick="startTimer()">Start</button>
-
-    <button onclick="pauseTimer()">Pause</button>
-
-    <button onclick="resetTimer()">Reset</button>
-
-</div>
-<div class="planner-box">
-
-    <h2>🔥 Daily Motivation</h2>
-
-    <h3 id="quote">
-        Success doesn't come from motivation alone. It comes from consistency.
-    </h3>
-
-    <button onclick="newQuote()">New Quote</button>
-
-</div> 
-<div class="planner-box">
-
-    <h2>📝 Quick Study Notes</h2>
-
-    <textarea id="notes"
-    placeholder="Write your study notes here..."
-    style="width:100%;height:180px;padding:15px;
-    border:none;border-radius:12px;
-    margin-top:15px;font-size:16px;"></textarea>
-
-    <br><br>
-
-    <button onclick="saveNotes()">Save Notes</button>
-
-</div>
-<div class="planner-box">
-
-    <h2>🎯 Goal Tracker</h2>
-
-    <input type="text" id="goal-input"
-    placeholder="Enter your goal">
-
-    <button onclick="addGoal()">Add Goal</button>
-
-    <div id="goal-list"></div>
-
-</div>
-<div class="planner-box">
-
-    <h2>🔥 Study Streak</h2>
-
-    <h1 id="streak-count">0 Days</h1>
-
-    <button onclick="increaseStreak()">
-        Mark Today Complete
-    </button>
-
-    <button onclick="resetStreak()">
-        Reset
-    </button>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-</div>
