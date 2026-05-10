@@ -4,9 +4,13 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 app = Flask(__name__)
 
+# =========================
+# OPENAI CLIENT
+# =========================
+
 client = OpenAI(
 
-    api_key="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"
+    api_key=os.getenv("OPENAI_API_KEY")
 
 )
 
@@ -31,8 +35,6 @@ def login():
 
         username = request.form.get('username')
         password = request.form.get('password')
-
-        # Demo Login
 
         if username and password:
 
