@@ -1,5 +1,3 @@
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,348 +10,282 @@ content="width=device-width, initial-scale=1.0">
 
 <title>Manjora AI Dashboard</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-
-background:
-linear-gradient(
-135deg,
-#0f172a,
-#1e293b);
-
-color:white;
-
-min-height:100vh;
-}
-
-/* NAVBAR */
-
-.navbar{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:20px 40px;
-
-background:rgba(255,255,255,0.05);
-
-backdrop-filter:blur(10px);
-}
-
-.navbar h2{
-
-color:#38bdf8;
-
-font-size:34px;
-}
-
-.menu a{
-
-color:white;
-
-text-decoration:none;
-
-margin-left:25px;
-
-font-size:18px;
-
-transition:0.3s;
-}
-
-.menu a:hover{
-
-color:#38bdf8;
-}
-
-/* HERO */
-
-.hero{
-
-text-align:center;
-
-padding:70px 20px;
-}
-
-.hero h1{
-
-font-size:65px;
-
-color:#38bdf8;
-}
-
-.hero p{
-
-margin-top:20px;
-
-font-size:24px;
-
-color:#cbd5e1;
-}
-
-/* CARDS */
-
-.cards{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
-
-gap:30px;
-
-padding:40px;
-}
-
-.card{
-
-background:rgba(255,255,255,0.08);
-
-padding:30px;
-
-border-radius:25px;
-
-transition:0.3s;
-
-box-shadow:
-0 0 20px rgba(0,0,0,0.2);
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-background:rgba(255,255,255,0.12);
-}
-
-.card h2{
-
-color:#38bdf8;
-
-margin-bottom:15px;
-
-font-size:30px;
-}
-
-.card p{
-
-color:#e2e8f0;
-
-line-height:1.7;
-
-font-size:18px;
-}
-
-.btn{
-
-display:inline-block;
-
-margin-top:20px;
-
-padding:12px 22px;
-
-background:#2563eb;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:12px;
-
-transition:0.3s;
-}
-
-.btn:hover{
-
-background:#1d4ed8;
-
-transform:scale(1.05);
-}
-
-@media(max-width:768px){
-
-.navbar{
-
-flex-direction:column;
-}
-
-.menu{
-
-margin-top:15px;
-}
-
-.menu a{
-
-display:inline-block;
-
-margin:10px;
-}
-
-.hero h1{
-
-font-size:42px;
-}
-
-.hero p{
-
-font-size:20px;
-}
-
-}
-
-</style>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <div class="navbar">
 
-<h2>
+    <h2>
 
-🚀 Manjora AI
+        🚀 Manjora AI
 
-</h2>
+    </h2>
 
-<div class="menu">
+    <div class="menu">
 
-<a href="/dashboard">Home</a>
+        <a href="/dashboard">Home</a>
 
-<a href="/planner">Planner</a>
+        <a href="/planner">Planner</a>
 
-<a href="/career">Career</a>
+        <a href="/career">Career</a>
 
-<a href="/books">Books</a>
+        <a href="/books">Books</a>
 
-<a href="/affairs">Current Affairs</a>
+        <a href="/affairs">Current Affairs</a>
+
+    </div>
 
 </div>
 
-</div>
+<!-- HERO SECTION -->
 
 <div class="hero">
 
-<h1>
+    <h1>
 
-Welcome to Manjora AI
+        Welcome to Manjora AI
 
-</h1>
+    </h1>
 
-<p>
+    <p>
 
-Smart Learning & Productivity Platform
+        Smart Learning & Productivity Platform
 
-</p>
+    </p>
 
 </div>
+
+<!-- STATS SECTION -->
+
+<div class="stats-container">
+
+    <div class="stat-box">
+
+        <h1>
+
+            10K+
+
+        </h1>
+
+        <p>
+
+            Active Learners
+
+        </p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h1>
+
+            500+
+
+        </h1>
+
+        <p>
+
+            Daily Study Plans
+
+        </p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h1>
+
+            95%
+
+        </h1>
+
+        <p>
+
+            Productivity Growth
+
+        </p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h1>
+
+            24/7
+
+        </h1>
+
+        <p>
+
+            AI Assistance
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FEATURE CARDS -->
 
 <div class="cards">
 
-<div class="card">
+    <div class="card">
 
-<h2>
+        <h2>
 
-📚 Study Planner
+            📚 Study Planner
 
-</h2>
+        </h2>
 
-<p>
+        <p>
 
-Organize your study schedules,
-manage productivity and complete targets.
+            Organize your study schedules,
+            manage productivity and complete targets.
 
-</p>
+        </p>
 
-<a href="/planner"
-class="btn">
+        <a href="/planner"
+        class="btn">
 
-Open
+            Open
 
-</a>
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            🎯 Career Roadmap
+
+        </h2>
+
+        <p>
+
+            Explore career guidance,
+            skills and learning paths.
+
+        </p>
+
+        <a href="/career"
+        class="btn">
+
+            Explore
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            📰 Current Affairs
+
+        </h2>
+
+        <p>
+
+            Read latest daily news,
+            UPSC current affairs and technology updates.
+
+        </p>
+
+        <a href="/affairs"
+        class="btn">
+
+            Open News
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            📖 Books & Lectures
+
+        </h2>
+
+        <p>
+
+            Access books, notes,
+            lectures and educational resources.
+
+        </p>
+
+        <a href="/books"
+        class="btn">
+
+            Open Library
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            🤖 AI Timetable Generator
+
+        </h2>
+
+        <p>
+
+            Generate smart schedules for students,
+            UPSC aspirants and professionals.
+
+        </p>
+
+        <a href="/planner"
+        class="btn">
+
+            Generate
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            🔥 Productivity Tracker
+
+        </h2>
+
+        <p>
+
+            Track your goals,
+            study streaks and performance analytics.
+
+        </p>
+
+        <a href="/planner"
+        class="btn">
+
+            Track Progress
+
+        </a>
+
+    </div>
 
 </div>
 
-<div class="card">
+<!-- FOOTER -->
 
-<h2>
+<div class="footer">
 
-🎯 Career Roadmap
-
-</h2>
-
-<p>
-
-Explore career guidance,
-skills and learning paths.
-
-</p>
-
-<a href="/career"
-class="btn">
-
-Explore
-
-</a>
-
-</div>
-
-<div class="card">
-
-<h2>
-
-📰 Current Affairs
-
-</h2>
-
-<p>
-
-Read latest daily news,
-UPSC current affairs and technology updates.
-
-</p>
-
-<a href="/affairs"
-class="btn">
-
-Open News
-
-</a>
-
-</div>
-
-<div class="card">
-
-<h2>
-
-📖 Books & Lectures
-
-</h2>
-
-<p>
-
-Access books, notes,
-lectures and educational resources.
-
-</p>
-
-<a href="/books"
-class="btn">
-
-Open Library
-
-</a>
-
-</div>
+    🚀 Manjora AI © 2026 | Built for Smart Learners
 
 </div>
 
