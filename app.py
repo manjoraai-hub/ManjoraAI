@@ -1,6 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
+from openai import OpenAI
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 app = Flask(__name__)
+
+client = OpenAI(
+
+    api_key="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"
+
+)
 
 # =========================
 # HOME PAGE
@@ -170,6 +178,56 @@ def banking():
 def gate():
 
     return render_template('gate.html')
+
+
+# =========================
+# AI CHATBOT
+# =========================
+
+@app.route('/chat', methods=['POST'])
+def chat():
+
+    data = request.get_json()
+
+    user_message = data.get("message")
+
+    try:
+
+        response = client.chat.completions.create(
+
+            model="gpt-3.5-turbo",
+
+            messages=[
+
+                {
+                    "role": "system",
+                    "content":
+                    "You are Manjora AI, a smart educational assistant for students, UPSC aspirants, coders and productivity learners."
+                },
+
+                {
+                    "role": "user",
+                    "content": user_message
+                }
+            ]
+        )
+
+        reply = response.choices[0].message.content
+
+        return jsonify({
+
+            "reply": reply
+
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "reply":
+            f"Error: {str(e)}"
+
+        })
 
 
 # =========================
